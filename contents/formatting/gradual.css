@@ -9,3 +9,24 @@ body{
 #gradual {
 	font-size: 175%;
 }
+
+/*Source: https://www.getmdl.io/components/index.html#cards-section*/
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../css/images/MITpic.jpeg') bottom right 15% no-repeat #46B6AC;
+}
+
+#mitCard {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+#harvardCard {
+  margin-left: 420px;
+  margin-top: -50px;
+}
