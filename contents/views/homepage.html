@@ -28,15 +28,6 @@
                 mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <div class="mdl-layout-spacer"></div>
-          <!-- Flat button with ripple -->
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">notifications</i>
-          </button>
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Schedule</a>
-          </nav>
-          <span>GRADual</span>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
             <label class="mdl-button mdl-js-button mdl-button--icon"
@@ -48,14 +39,28 @@
                      id="fixed-header-drawer-exp">
             </div>
           </div>
+          <div class="mdl-layout-spacer"></div>
+          <button style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            Schedule
+          </button>
+          <div class="mdl-layout-spacer"></div>
+          <span id="gradual">GRADual</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-layout-spacer"></div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2">notifications</i>
+          </button>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <i style="color:white" class="material-icons">account_box</i>
+          </button>
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">My Schools</span>
+        <span class="mdl-layout-title">My Applications</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">MIT</a>
-          <a class="mdl-navigation__link" href="">Harvard</a>
-          <a class="mdl-navigation__link" href="">Stanford</a>
+          <a class="mdl-navigation__link" href="http://www.google.com/">MIT</a>
+          <a class="mdl-navigation__link" href="http://www.bing.com/">Harvard</a>
+          <a class="mdl-navigation__link" href="http://www.yahoo.com/">Stanford</a>
         </nav>
       </div>
       <main class="mdl-layout__content">

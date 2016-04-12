@@ -3,6 +3,9 @@ body{
 }
 
 #bell {
-	position: relative;
-	left: 50;
+	color: white;
+}
+
+#gradual {
+	font-size: 175%;
 }
