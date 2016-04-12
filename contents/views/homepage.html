@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-   COLLABORATORS: Bootstrap library: http://getbootstrap.com/
+   
 
   -->
 <html>
@@ -8,8 +8,10 @@
     <meta charset="UTF-8">
     <title>GRADual</title>
     <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/material.min.css" rel="stylesheet">
     <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 
   </head>
@@ -18,12 +20,48 @@
     <!-- Dependencies -->
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-      <script src="../js/bootstrap.min.js"></script>
+      <script src="../js/material.min.js"></script>
       <script src="../models/gradual.js"></script>
 
-    <!-- Page layout -->
-
-    <div> Welcome to GRADual </div>
+    <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+                mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <div class="mdl-layout-spacer"></div>
+          <!-- Flat button with ripple -->
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">notifications</i>
+          </button>
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="">Schedule</a>
+          </nav>
+          <span>GRADual</span>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                      mdl-textfield--floating-label mdl-textfield--align-right">
+            <label class="mdl-button mdl-js-button mdl-button--icon"
+                   for="fixed-header-drawer-exp">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" name="sample"
+                     id="fixed-header-drawer-exp">
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">My Schools</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">MIT</a>
+          <a class="mdl-navigation__link" href="">Harvard</a>
+          <a class="mdl-navigation__link" href="">Stanford</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content"><!-- Your content goes here --></div>
+      </main>
+    </div>
 
   </body>
 </html>

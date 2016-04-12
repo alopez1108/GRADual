@@ -1,3 +1,8 @@
 body{
   background-color: #eee;
 }
+
+#bell {
+	position: relative;
+	left: 50;
+}
