@@ -64,9 +64,39 @@
         <main class="mdl-layout__content">
 			<div>
 			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-				style="display:block; width:100%; max-width:400px; margin-left:auto; margin-right:auto; margin-top:60px;"> + Add Reminder
+				style="display:block; width:100%; max-width:400px; margin-right:auto; margin-left:980px; margin-top:30px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5);"> + Add Reminder
 			  </button>
-			  <div class="calendar" style="width:100%; max-width:800px; display:block; margin-left:auto; margin-right:auto; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); margin-top:60px;">
+			  <div id="school-checker"
+				style="width:300px; height:735px; position:absolute; margin-left:auto; left:155px; top:95px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5);">
+				<table id="school-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
+				  <thead>
+					<tr>
+					  <th class="mdl-data-table__cell--non-numeric" style="height:105px;">All Schools</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="red" style="height:105px;">MIT</td>
+					</tr>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="blue" style="height:105px;">Harvard</td>
+					</tr>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="yellow" style="height:105px;">Stanford</td>
+					</tr>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="purple" style="height:105px;">Columbia</td>
+					</tr>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="green" style="height:105px;">Yale</td>
+					</tr>
+					<tr>
+					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="orange" style="height:105px;">UC Berkeley</td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+			  <div class="calendar" style="width:100%; max-width:940px; display:block; margin-right:auto; margin-left:710px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); margin-top:30px;">
 				<div class="monthly" id="mycalendar">
 				</div>
 			  </div>
