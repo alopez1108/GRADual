@@ -40,39 +40,7 @@ $(function() {
 		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Resources </div>');
 	}
 
-	var replace_side_bar =''; 
-	for (i = 0; i < applications.length; i++) {
-		var application = applications[i];
-		replace_side_bar = replace_side_bar + '<a class="mdl-navigation__link" id=' + application.school + '>' + application.school + '</a>';
-	}
-
-	$('#side-drawers').replaceWith('<nav id="side-drawers" class="mdl-navigation">' + replace_side_bar + '</nav>');
-
-	$('.mdl-navigation__link').click(function(e){
-		current_school = $(this).context.id;
-		$('#school-name').text(current_school);
-		var application = find_application_by_school(current_school);
-		var replace_tasks = '';
-		for (i=0; i < application.tasks.length; i++) {
-			var task = application.tasks[i];
-			replace_tasks = replace_tasks + '<tr><td id="task-name" class="mdl-data-table__cell--non-numeric">' + task.description + '</td></tr>';
-		}
-		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"><thead><tr><th class="mdl-data-table__cell--non-numeric">Tasks</th></tr></thead><tbody>' + replace_tasks + '</tbody></table'
-		);
-		componentHandler.upgradeAllRegistered();
-	});
-
-	$('#resources-button').click(function(){
-		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="resources-content"></div>');
-		change_to_resources();
-	});
-
-	$('#documents-button').click(function(){
-		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="documents-content"></div>');
-		change_to_documents();
-	});
-
-	$('.mdl-layout__content').on('click', 'a', function(){
+	var change_to_school_page = function(){
 		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">+ Add Task</button><div id="buttons-container"><button id="resources-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Resources</button><button id="documents-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Documents</button><div></div></div>');
 		$('#school-name').text(current_school);
 		var application = find_application_by_school(current_school);
@@ -84,6 +52,35 @@ $(function() {
 		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"><thead><tr><th class="mdl-data-table__cell--non-numeric">Tasks</th></tr></thead><tbody>' + replace_tasks + '</tbody></table'
 		);
 		componentHandler.upgradeAllRegistered();
+	}
+
+	var replace_side_bar =''; 
+	for (i = 0; i < applications.length; i++) {
+		var application = applications[i];
+		replace_side_bar = replace_side_bar + '<a class="mdl-navigation__link" id=' + application.school + '>' + application.school + '</a>';
+	}
+
+	$('#side-drawers').replaceWith('<nav id="side-drawers" class="mdl-navigation">' + replace_side_bar + '</nav>');
+
+	$('.mdl-navigation__link').click(function(e){
+		current_school = $(this).context.id;
+		change_to_school_page();
+	});
+
+	$('.mdl-layout__content').on('click', '#resources-button', function(){
+		console.log("resources");
+		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="resources-content"></div>');
+		change_to_resources();
+	});
+
+
+	$('.mdl-layout__content').on('click', '#documents-button', function(){
+		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="documents-content"></div>');
+		change_to_documents();
+	});
+
+	$('.mdl-layout__content').on('click', 'a', function(){
+		change_to_school_page();
 	});
 
 
