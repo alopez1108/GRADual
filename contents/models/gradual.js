@@ -29,6 +29,17 @@ $(function() {
 	//////////////////////
 	// Set up page
 
+	var current_school; 
+
+	var change_to_resources = function (){
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Resources </div>');
+		$('#resources-content').replaceWith('<div><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><span class="mdl-list__item-primary-content">Link to Application Portal</span></li><li class="mdl-list__item"><span class="mdl-list__item-primary-content">FAQ</span></li><li class="mdl-list__item"><span class="mdl-list__item-primary-content">Important Phone Numbers</span></li><li class="mdl-list__item"><span class="mdl-list__item-primary-content">Important Email Numbers</span></li></ul></div>')
+	}
+
+	var change_to_documents = function(){
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Resources </div>');
+	}
+
 	var replace_side_bar =''; 
 	for (i = 0; i < applications.length; i++) {
 		var application = applications[i];
@@ -38,15 +49,42 @@ $(function() {
 	$('#side-drawers').replaceWith('<nav id="side-drawers" class="mdl-navigation">' + replace_side_bar + '</nav>');
 
 	$('.mdl-navigation__link').click(function(e){
-		$('#school-name').text($(this).context.id);
-		var application = find_application_by_school($(this).context.id);
+		current_school = $(this).context.id;
+		$('#school-name').text(current_school);
+		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
 		for (i=0; i < application.tasks.length; i++) {
 			var task = application.tasks[i];
 			replace_tasks = replace_tasks + '<tr><td id="task-name" class="mdl-data-table__cell--non-numeric">' + task.description + '</td></tr>';
 		}
-		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"><thead><tr><th class="mdl-data-table__cell--non-numeric">Tasks</th></tr></thead><tbody>' + replace_tasks + '</tbody></table');
-		componentHandler.upgradeElement($('#task-list'));
+		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"><thead><tr><th class="mdl-data-table__cell--non-numeric">Tasks</th></tr></thead><tbody>' + replace_tasks + '</tbody></table'
+		);
+		componentHandler.upgradeAllRegistered();
 	});
+
+	$('#resources-button').click(function(){
+		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="resources-content"></div>');
+		change_to_resources();
+	});
+
+	$('#documents-button').click(function(){
+		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="documents-content"></div>');
+		change_to_documents();
+	});
+
+	$('.mdl-layout__content').on('click', 'a', function(){
+		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">+ Add Task</button><div id="buttons-container"><button id="resources-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Resources</button><button id="documents-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Documents</button><div></div></div>');
+		$('#school-name').text(current_school);
+		var application = find_application_by_school(current_school);
+		var replace_tasks = '';
+		for (i=0; i < application.tasks.length; i++) {
+			var task = application.tasks[i];
+			replace_tasks = replace_tasks + '<tr><td id="task-name" class="mdl-data-table__cell--non-numeric">' + task.description + '</td></tr>';
+		}
+		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"><thead><tr><th class="mdl-data-table__cell--non-numeric">Tasks</th></tr></thead><tbody>' + replace_tasks + '</tbody></table'
+		);
+		componentHandler.upgradeAllRegistered();
+	});
+
 
 });

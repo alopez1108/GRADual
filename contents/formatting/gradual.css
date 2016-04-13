@@ -123,3 +123,20 @@ body{
 .mdl-menu__item {
 	font-family: 'Quattrocento', serif;
 }
+
+#navigation {
+  padding-left: 20px;
+  margin: 30px;
+  font-size: 20px;
+}
+
+.mdl-list__item, .mdl-list__item .mdl-list__item-primary-content{
+  width: 400px;
+  background: #999;
+  margin: 10px 40px;
+  padding-left: 10px;
+}
+
+#school_name_link{
+  text-decoration: underline;
+}
