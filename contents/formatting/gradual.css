@@ -54,3 +54,55 @@ body{
 	text-align: center;
 	vertical-align: center;
 }
+
+#harvardCard {
+  margin-left: 420px;
+  margin-top: -50px;
+}
+
+.page-content{
+  position: relative;
+}
+
+#tasks {
+  width: 70%;
+  display: inline-block;
+  position: absolute;
+}
+
+#buttons {
+  left: 70%;
+  width: 30%;
+  display: inline-block;
+  position: absolute;
+}
+
+#task-list {
+  margin: auto;
+  width: 95%;
+}
+
+#task-name {
+  width: 90%;
+}
+
+#school-name {
+  padding-left: 3%;
+}
+
+#resources-button {
+  display: block;
+  top: 20%;
+  margin-top: 10px;
+}
+
+#documents-button{
+  display: block;
+  margin-top: 10px;
+}
+
+#buttons-container{
+  top: 50px;
+  display: block;
+  position: relative;
+}
