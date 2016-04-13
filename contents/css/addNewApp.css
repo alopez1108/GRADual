@@ -1,0 +1,12 @@
+.mdh-expandable-search,
+.mdh-expandable-search form {
+  /* Cross browser inline-flex */
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/*.ui-autocomplete-input { z-index:2147483647; }
+.ui-helper-hidden-accessible { z-index:5; }*/

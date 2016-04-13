@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+   
+
+  -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GRADual</title>
+    <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="../css/material.min.css" rel="stylesheet">
+    <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="../css/addNewApp.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+      <!-- Dependencies -->
+      <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+      <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+      <script src="../js/material.min.js"></script>
+      <script src="../models/gradual.js"></script>
+      <script src="../js/addNewApp.js"></script>
+
+
+      <button type="button" class="mdl-button show-modal">Add New Application!</button>
+      <dialog class="mdl-dialog" id="dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <!-- Search -->
+          <div class="mdh-expandable-search mdl-cell--hide-phone">
+            <i class="material-icons">search</i>
+            <form action="#" id="search_field">
+              <input type="text" placeholder="Search" size="40" id="search_applications">
+            </form>
+          </div>
+          <!-- Displayed on mobile -->
+          <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop"></div>
+          <!-- Search button -->
+          <button class="mdh-toggle-search mdl-button mdl-js-button mdl-button--icon mdl-cell--hide-tablet mdl-cell--hide-desktop">
+            <i class="material-icons">search</i>
+          </button>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button">Add</button>
+          <button type="button" class="mdl-button close">Cancel</button>
+        </div>
+      </dialog>
+
+
+  </body>
+</html>
+
+
