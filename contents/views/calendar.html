@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+   
+
+  -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GRADual</title>
+    <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="../css/material.min.css" rel="stylesheet">
+    <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <!-- <link href="../images/MITpic.jpeg" rel="stylesheet" /> -->
+	<link rel="stylesheet" href="../css/monthly.css">
+
+  </head>
+  <body>
+    <!-- Dependencies -->
+      <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+      <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+      <script src="../js/material.min.js"></script>
+      <script src="../models/gradual.js"></script>
+	  <script type="text/javascript" src="../js/monthly-jquery.js"></script>
+	  <script type="text/javascript" src="../js/monthly.js"></script>
+	  <script type="text/javascript">
+		  $(window).load( function() {
+			  $('#mycalendar').monthly();
+		  });
+	  </script>
+
+      <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+          <div class="mdl-layout__header-row">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                        mdl-textfield--floating-label mdl-textfield--align-right">
+              <label class="mdl-button mdl-js-button mdl-button--icon"
+                     for="fixed-header-drawer-exp">
+                <i class="material-icons">search</i>
+              </label>
+              <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample"
+                       id="fixed-header-drawer-exp">
+              </div>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+            <button style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Schedule
+            </button>
+            <div class="mdl-layout-spacer"></div>
+            <span id="gradual">GRADual</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2">notifications</i>
+            </button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i style="color:white" class="material-icons">account_box</i>
+            </button>
+          </div>
+        </header>
+        <main class="mdl-layout__content">
+			<div>
+			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+				style="display:block; width:100%; max-width:400px; margin-left:auto; margin-right:auto; margin-top:60px;"> + Add Reminder
+			  </button>
+			  <div class="calendar" style="width:100%; max-width:800px; display:block; margin-left:auto; margin-right:auto; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); margin-top:60px;">
+				<div class="monthly" id="mycalendar">
+				</div>
+			  </div>
+			</div>
+        </main>
+      </div>
+  </body>
+</html>
