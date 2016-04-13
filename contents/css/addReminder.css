@@ -1,16 +1,20 @@
+/*.mdl-layout {
+	align-items: center;
+  justify-content: center;
+}
+.mdl-layout__content {
+	padding: 24px;
+	flex: none;
+}*/
+
 .mdh-expandable-search,
 .mdh-expandable-search form {
-  /* Cross browser inline-flex */
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -moz-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: block;
 }
 
 body .ui-autocomplete {
   /* font-family to all */
-  font-family: 'Balthazar', serif;
+  	font-family: 'Balthazar', serif;
 	max-height: 200px;
 	overflow-y: auto;
 	/* prevent horizontal scrollbar */
@@ -24,4 +28,8 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
    background: #3f51b5;
    color: #FFFFFF;
    border-color: #3f51b5;
+}
+
+.mdl-textfield__input {
+	border-bottom-width: 2px 
 }

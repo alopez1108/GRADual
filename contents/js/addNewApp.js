@@ -8,7 +8,17 @@ $(function() {
 		dialog.showModal();
 	});
 	dialog.querySelector('.close').addEventListener('click', function() {
+		$('#search_field')[0].reset(); //clear text
 		dialog.close();
+	});
+	dialog.querySelector('.add').addEventListener('click',function() {
+		// add university to homepage
+		var text_input = $('#search_applications').val();
+		// check if it is in the array of colleges
+		if (jQuery.inArray(text_input, colleges) !== -1) {
+			console.log("yes");
+			// dialog.close();
+		}
 	});
 
     var colleges = [
