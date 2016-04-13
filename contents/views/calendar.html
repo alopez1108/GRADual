@@ -12,11 +12,11 @@
     <link href="../formatting/gradual.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <!-- <link href="../images/MITpic.jpeg" rel="stylesheet" /> -->
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="../css/monthly.css">
 
   </head>
-  <body>
+  <body id="homepage">
     <!-- Dependencies -->
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -34,6 +34,24 @@
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
           <div class="mdl-layout__header-row">
+            <button id= "homeButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Home
+            </button>
+            <script>
+              document.getElementById("homeButton").addEventListener("click", function() {console.log("Go to Home Page")});
+            </script>
+            <button id= "calendarButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Calendar
+            </button>
+            <script>
+              document.getElementById("calendarButton").addEventListener("click", function() {console.log("Go to Calendar Page")});
+            </script>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <span id="gradual">GRADual</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                         mdl-textfield--floating-label mdl-textfield--align-right">
               <label class="mdl-button mdl-js-button mdl-button--icon"
@@ -45,20 +63,23 @@
                        id="fixed-header-drawer-exp">
               </div>
             </div>
-            <div class="mdl-layout-spacer"></div>
-            <button style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-              Schedule
+            <button id="notificationsButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="3">notifications</i>
             </button>
-            <div class="mdl-layout-spacer"></div>
-            <span id="gradual">GRADual</span>
-            <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-spacer"></div>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-              <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2">notifications</i>
-            </button>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="notificationsButton">
+              <li class="mdl-menu__item">Interview in 6 Hours</li>
+              <li class="mdl-menu__item">You've been accepted to Yale!</li>
+              <li class="mdl-menu__item">Harvard Application due on Monday</li>
+            </ul>
+            <script>
+              document.getElementById("notificationsButton").addEventListener("click", function() {console.log("Show Notifications")});
+            </script>
+            <button id="userButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
               <i style="color:white" class="material-icons">account_box</i>
             </button>
+            <script>
+              document.getElementById("userButton").addEventListener("click", function() {console.log("Go to User Info Page")});
+            </script>
           </div>
         </header>
         <main class="mdl-layout__content">
@@ -71,27 +92,27 @@
 				<table id="school-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
 				  <thead>
 					<tr>
-					  <th class="mdl-data-table__cell--non-numeric" style="height:105px;">All Schools</th>
+					  <th class="mdl-data-table__cell--non-numeric" style="height:105px; text-align:left;">All Schools</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="red" style="height:105px;">MIT</td>
+					  <td id="task-name1" class="mdl-data-table__cell--non-numeric" bgcolor="#ff4d4d" style="height:105px; width:80%;">MIT</td>
 					</tr>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="blue" style="height:105px;">Harvard</td>
+					  <td id="task-name2" class="mdl-data-table__cell--non-numeric" bgcolor="#6666ff" style="height:105px;">Harvard</td>
 					</tr>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="yellow" style="height:105px;">Stanford</td>
+					  <td id="task-name3" class="mdl-data-table__cell--non-numeric" bgcolor="#ffff80" style="height:105px;">Stanford</td>
 					</tr>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="purple" style="height:105px;">Columbia</td>
+					  <td id="task-name4" class="mdl-data-table__cell--non-numeric" bgcolor="#ff80ff" style="height:105px;">Columbia</td>
 					</tr>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="green" style="height:105px;">Yale</td>
+					  <td id="task-name5" class="mdl-data-table__cell--non-numeric" bgcolor="#80ff80" style="height:105px;">Yale</td>
 					</tr>
 					<tr>
-					  <td id="task-name" class="mdl-data-table__cell--non-numeric" bgcolor="orange" style="height:105px;">UC Berkeley</td>
+					  <td id="task-name6" class="mdl-data-table__cell--non-numeric" bgcolor="#ffc14d" style="height:105px;">UC Berkeley</td>
 					</tr>
 				  </tbody>
 				</table>
