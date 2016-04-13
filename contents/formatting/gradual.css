@@ -7,26 +7,50 @@ body{
 }
 
 #gradual {
-	font-size: 175%;
+	font-family: 'Balthazar', serif;
+	font-size: 250%;
+}
+
+#scheduleButton {
+	font-family: 'Balthazar', serif;
+	font-size: 125%;
 }
 
 /*Source: https://www.getmdl.io/components/index.html#cards-section*/
 .demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
+  width: 310px;
+  height: 310px;
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
-  background:
-    url('../css/images/MITpic.jpeg') bottom right 15% no-repeat #46B6AC;
 }
 
-#mitCard {
-  margin-left: 50px;
-  margin-top: 50px;
+.demo-card-square {
+  margin-left: 40px;
+  margin-top: 40px;
+  position: relative;
 }
 
-#harvardCard {
-  margin-left: 420px;
-  margin-top: -50px;
+.background {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.mdl-card__title-text {
+	font-family: 'Balthazar', serif;
+	font-size: 180%;
+	position: absolute;
+	bottom: 35px;
+	left: 20px;
+	color: #B60611;
+	background: white;
+	padding:5px;
+	font-weight: bold;
+	border-radius: 3px;
+}
+
+#newText {
+	text-align: center;
+	vertical-align: center;
 }
