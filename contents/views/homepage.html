@@ -1,141 +1,223 @@
-<div>
-  <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-  <link href="../css/material.min.css" rel="stylesheet">
-  <link href="../formatting/gradual.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>  
-  <script src="../jquery/js/jquery-1.12.0.min.js"></script>
-  <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script src="../js/material.min.js"></script>
-  <script src="../models/gradual.js"></script>
-  <table>
-    <tr>
-      <td>
-        <div id="mitCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div id="mitSpace" class="mdl-card__title mdl-card--expand">
-            <img id="mitBackground" class="background" src="../images/MITpic.jpg" width="320" left="0" z-index="0">
-            </img>
-            <h2 id="mitText" class="mdl-card__title-text" z-index="1">MIT</h2>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="mitProgress" class="mdl-progress mdl-js-progress"></div>
+<!DOCTYPE html>
+<!--
+   
+
+  -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GRADual</title>
+    <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="../css/material.min.css" rel="stylesheet">
+    <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body id="homepage">
+    <!-- Dependencies -->
+      <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+      <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+      <script src="../js/material.min.js"></script>
+      <script src="../models/gradual.js"></script>
+
+      <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+          <div class="mdl-layout__header-row">
+            <button id= "homeButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Home
+            </button>
             <script>
-              document.getElementById("mitCard").addEventListener("click", function() {console.log("Mit Card Clicked")});
-              document.querySelector('#mitProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(56);
-              });
+              document.getElementById("homeButton").addEventListener("click", function() {console.log("Go to Home Page")});
+            </script>
+            <button id= "calendarButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              Calendar
+            </button>
+            <script>
+              document.getElementById("calendarButton").addEventListener("click", function() {console.log("Go to Calendar Page")});
+            </script>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <span id="gradual">GRADual</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                        mdl-textfield--floating-label mdl-textfield--align-right">
+              <label class="mdl-button mdl-js-button mdl-button--icon"
+                     for="fixed-header-drawer-exp">
+                <i class="material-icons">search</i>
+              </label>
+              <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample"
+                       id="fixed-header-drawer-exp">
+              </div>
+            </div>
+            <button id="notificationsButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="3">notifications</i>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="notificationsButton">
+              <li class="mdl-menu__item">Interview in 6 Hours</li>
+              <li class="mdl-menu__item">You've been accepted to Yale!</li>
+              <li class="mdl-menu__item">Harvard Application due on Monday</li>
+            </ul>
+            <script>
+              document.getElementById("notificationsButton").addEventListener("click", function() {console.log("Show Notifications")});
+            </script>
+            <button id="userButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+              <i style="color:white" class="material-icons">account_box</i>
+            </button>
+            <script>
+              document.getElementById("userButton").addEventListener("click", function() {console.log("Go to User Info Page")});
             </script>
           </div>
-        </div>
-      </td>
-      <td>
-        <div id="harvardCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div id="harvardSpace" class="mdl-card__title mdl-card--expand">
-            <img id="harvardBackground" class="background" src="../images/Harvardpic.jpg" width="320" height="289" left="0" z-index="0">
-            </img>
-            <h2 id="harvardText" class="mdl-card__title-text">Harvard</h2>
+        </header>
+        <main class="mdl-layout__content">
+          <div class="page-content">
+            <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+            <link href="../css/material.min.css" rel="stylesheet">
+            <link href="../formatting/gradual.css" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+            <link href='https://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>  
+            <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+            <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+            <script src="../js/material.min.js"></script>
+            <script src="../models/gradual.js"></script>
+            <table>
+              <tr>
+                <td>
+                  <div id="mitCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div id="mitSpace" class="mdl-card__title mdl-card--expand">
+                      <img id="mitBackground" class="background" src="../images/MITpic.jpg" width="320" left="0" z-index="0">
+                      </img>
+                      <h2 id="mitText" class="mdl-card__title-text" z-index="1">MIT</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="mitProgress" class="mdl-progress mdl-js-progress"></div>
+                      <script>
+                        document.getElementById("mitCard").addEventListener("click", function() {console.log("Mit Card Clicked")});
+                        document.querySelector('#mitProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(56);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div id="harvardCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div id="harvardSpace" class="mdl-card__title mdl-card--expand">
+                      <img id="harvardBackground" class="background" src="../images/Harvardpic.jpg" width="320" height="289" left="0" z-index="0">
+                      </img>
+                      <h2 id="harvardText" class="mdl-card__title-text">Harvard</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="harvardProgress" class="mdl-progress mdl-js-progress" style="color:#B60611"></div>
+                      <script>
+                        document.getElementById("harvardCard").addEventListener("click", function() {console.log("Harvard Card Clicked")});
+                        document.querySelector('#harvardProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(13);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div id="stanfordCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div id="stanfordSpace" class="mdl-card__title mdl-card--expand">
+                      <img id="stanfordBackground" class="background" src="../images/Stanfordpic.jpg" width="320" height="289" left="0" z-index="0">
+                      </img>
+                      <h2 id="stanfordText" class="mdl-card__title-text">Stanford</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="stanfordProgress" class="mdl-progress mdl-js-progress"></div>
+                      <script>
+                        document.getElementById("stanfordCard").addEventListener("click", function() {console.log("Stanford Card Clicked")});
+                        document.querySelector('#stanfordProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(100);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div id="columbiaCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <img id="columbiaBackground" class="background" src="../images/Columbiapic.jpg" width="320" height="289" left="0" z-index="0">
+                      <h2 class="mdl-card__title-text">Columbia</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="columbiaProgress" class="mdl-progress mdl-js-progress"></div>
+                      <script>
+                        document.getElementById("columbiaCard").addEventListener("click", function() {console.log("Columbia Card Clicked")});
+                        document.querySelector('#columbiaProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(78);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="yaleCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <img id="yaleBackground" class="background" src="../images/Yalepic.jpg" width="320" height="289" left="0" z-index="0">
+                      <h2 class="mdl-card__title-text">Yale</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="yaleProgress" class="mdl-progress mdl-js-progress"></div>
+                      <script>
+                        document.getElementById("yaleCard").addEventListener("click", function() {console.log("Yale Card Clicked")});
+                        document.querySelector('#yaleProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(100);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div id="berkeleyCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <img id="berkeleyBackground" class="background" src="../images/Berkeleypic.jpg" width="320" height="289" left="0" z-index="0">
+                      <h2 class="mdl-card__title-text">UC Berkeley</h2>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                      <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
+                      <div id="berkeleyProgress" class="mdl-progress mdl-js-progress"></div>
+                      <script>
+                        document.getElementById("berkeleyCard").addEventListener("click", function() {console.log("Berkeley Card Clicked")});
+                        document.querySelector('#berkeleyProgress').addEventListener('mdl-componentupgraded', function() {
+                          this.MaterialProgress.setProgress(47);
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div id="newCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                      <i id="addAppIcon" style="color:#B60611" class="material-icons">add</i>
+                      <h2 id="newText" class="mdl-card__title-text" style="align:center">Add New Application</h2>
+                    </div>
+                    <script>
+                      document.getElementById("newCard").addEventListener("click", function() {console.log("New Application Card Clicked")});
+                    </script>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+              </tr>
+            </table>
           </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="harvardProgress" class="mdl-progress mdl-js-progress" style="color:#B60611"></div>
-            <script>
-              document.getElementById("harvardCard").addEventListener("click", function() {console.log("Harvard Card Clicked")});
-              document.querySelector('#harvardProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(13);
-              });
-            </script>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div id="stanfordCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div id="stanfordSpace" class="mdl-card__title mdl-card--expand">
-            <img id="stanfordBackground" class="background" src="../images/Stanfordpic.jpg" width="320" height="289" left="0" z-index="0">
-            </img>
-            <h2 id="stanfordText" class="mdl-card__title-text">Stanford</h2>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="stanfordProgress" class="mdl-progress mdl-js-progress"></div>
-            <script>
-              document.getElementById("stanfordCard").addEventListener("click", function() {console.log("Stanford Card Clicked")});
-              document.querySelector('#stanfordProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(100);
-              });
-            </script>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div id="columbiaCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__title mdl-card--expand">
-            <img id="columbiaBackground" class="background" src="../images/Columbiapic.jpg" width="320" height="289" left="0" z-index="0">
-            <h2 class="mdl-card__title-text">Columbia</h2>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="columbiaProgress" class="mdl-progress mdl-js-progress"></div>
-            <script>
-              document.getElementById("columbiaCard").addEventListener("click", function() {console.log("Columbia Card Clicked")});
-              document.querySelector('#columbiaProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(78);
-              });
-            </script>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div id="yaleCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__title mdl-card--expand">
-            <img id="yaleBackground" class="background" src="../images/Yalepic.jpg" width="320" height="289" left="0" z-index="0">
-            <h2 class="mdl-card__title-text">Yale</h2>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="yaleProgress" class="mdl-progress mdl-js-progress"></div>
-            <script>
-              document.getElementById("yaleCard").addEventListener("click", function() {console.log("Yale Card Clicked")});
-              document.querySelector('#yaleProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(100);
-              });
-            </script>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div id="berkeleyCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__title mdl-card--expand">
-            <img id="berkeleyBackground" class="background" src="../images/Berkeleypic.jpg" width="320" height="289" left="0" z-index="0">
-            <h2 class="mdl-card__title-text">UC Berkley</h2>
-          </div>
-          <div class="mdl-card__actions mdl-card--border">
-            <!-- Source: https://www.getmdl.io/components/index.html#loading-section -->
-            <div id="berkeleyProgress" class="mdl-progress mdl-js-progress"></div>
-            <script>
-              document.getElementById("berkeleyCard").addEventListener("click", function() {console.log("Berkeley Card Clicked")});
-              document.querySelector('#berkeleyProgress').addEventListener('mdl-componentupgraded', function() {
-                this.MaterialProgress.setProgress(47);
-              });
-            </script>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div id="newCard" class="demo-card-square mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__title mdl-card--expand">
-            <h2 id="newText" class="mdl-card__title-text" style="align:center">Add New Application</h2>
-          </div>
-          <script>
-            document.getElementById("newCard").addEventListener("click", function() {console.log("New Application Card Clicked")});
-          </script>
-        </div>
-      </td>
-    </tr>
-    <tr>
-    </tr>
-  </table>
-</div>  
+        </main>
+      </div>
+  </body>
+</html>
