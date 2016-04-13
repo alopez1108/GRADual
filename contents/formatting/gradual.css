@@ -55,11 +55,6 @@ body{
 	vertical-align: center;
 }
 
-#harvardCard {
-  margin-left: 420px;
-  margin-top: -50px;
-}
-
 .page-content{
   position: relative;
 }
@@ -105,4 +100,8 @@ body{
   top: 50px;
   display: block;
   position: relative;
+}
+
+.mdl-layout__header {
+	background-color: #B60611;
 }
