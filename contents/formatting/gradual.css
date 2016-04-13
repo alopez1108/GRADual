@@ -7,12 +7,18 @@ body{
 }
 
 #gradual {
-	font-family: 'Balthazar', serif;
+	font-family: 'Quattrocento', serif;
 	font-size: 250%;
+	text-align: center;
 }
 
-#scheduleButton {
-	font-family: 'Balthazar', serif;
+#calendarButton {
+	font-family: 'Quattrocento', serif;
+	font-size: 125%;
+}
+
+#homeButton {
+	font-family: 'Quattrocento', serif;
 	font-size: 125%;
 }
 
@@ -38,7 +44,8 @@ body{
 }
 
 .mdl-card__title-text {
-	font-family: 'Balthazar', serif;
+	font-family: 'Quattrocento', serif;
+	font-weight: bold;
 	font-size: 180%;
 	position: absolute;
 	bottom: 35px;
@@ -46,13 +53,13 @@ body{
 	color: #B60611;
 	background: white;
 	padding:5px;
-	font-weight: bold;
 	border-radius: 3px;
 }
 
 #newText {
-	text-align: center;
-	vertical-align: center;
+	position: absolute;
+	left: 35px;
+	font-size: 150%;
 }
 
 .page-content{
@@ -104,4 +111,15 @@ body{
 
 .mdl-layout__header {
 	background-color: #B60611;
+}
+
+#addAppIcon {
+	position: absolute;
+	top: 43px;
+	left: 56px;
+	font-size: 1200%;
+}
+
+.mdl-menu__item {
+	font-family: 'Quattrocento', serif;
 }
