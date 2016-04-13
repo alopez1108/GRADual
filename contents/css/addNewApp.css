@@ -25,3 +25,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
    color: #FFFFFF;
    border-color: #3f51b5;
 }
+
+#dialog {
+  width: -webkit-fit-content;
+}
