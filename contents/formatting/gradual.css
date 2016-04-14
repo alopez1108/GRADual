@@ -140,3 +140,11 @@ body{
 #school_name_link{
   text-decoration: underline;
 }
+
+#resources-link{
+  text-decoration: underline;
+}
+
+a{
+  color: black;
+}
