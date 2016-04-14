@@ -24,6 +24,36 @@
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
 
+
+      <dialog class="mdl-dialog" id="dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <!-- Search -->
+          <div class="mdh-expandable-search mdl-cell--hide-phone">
+            <!-- Simple Textfield -->
+            <form action="#" id="search_field">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
+                <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
+              </div>
+            </form>
+          </div>
+          <!-- Displayed on mobile -->
+          <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop">
+            <form action="#" id="search_field">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
+                <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button add" style="font-family:'Balthazar', serif">Add</button>
+          <button type="button" class="mdl-button close" style="font-family: 'Balthazar', serif">Cancel</button>
+        </div>
+      </dialog>
+
       <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -209,34 +239,6 @@
                       <i id="addAppIcon" style="color:#B60611" class="material-icons">add</i>
                       <h2 id="newText" class="mdl-card__title-text" style="align:center">Add New Application</h2>
                     </div>
-                    <dialog class="mdl-dialog" id="dialog">
-                      <div class="mdl-dialog__content">
-                        <!-- Displayed on Computer and Tablet -->
-                        <!-- Search -->
-                        <div class="mdh-expandable-search mdl-cell--hide-phone">
-                          <!-- Simple Textfield -->
-                          <form action="#" id="search_field">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
-                              <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
-                            </div>
-                          </form>
-                        </div>
-                        <!-- Displayed on mobile -->
-                        <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop">
-                          <form action="#" id="search_field">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                              <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
-                              <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div class="mdl-dialog__actions">
-                        <button type="button" class="mdl-button add" style="font-family:'Balthazar', serif">Add</button>
-                        <button type="button" class="mdl-button close" style="font-family: 'Balthazar', serif">Cancel</button>
-                      </div>
-                    </dialog>
                     <!-- Add new application -->
                     <script>
                       $("#newCard").on("click", function() {
