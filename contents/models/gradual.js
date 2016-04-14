@@ -18,7 +18,7 @@ $(function() {
 	var find_application_by_school = function(school_name){
 		for (i = 0; i < applications.length; i++) {
 			var application = applications[i];
-			if (application.school ==  school_name){
+			if (application.school =  school_name){
 				return application;
 			}
 		}
@@ -108,5 +108,10 @@ $(function() {
 		change_to_emails();
 	});
 
+	var url = window.location.href;
+	if(url.indexOf('?')!=-1) {
+		var escuela = url.substring(url.indexOf('?')+2);
+		change_to_school_page(escuela);
+	}
 
 });
