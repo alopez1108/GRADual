@@ -24,11 +24,10 @@
       <script src="../models/Task.js"></script>
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
-  	  <script type="text/javascript" src="../js/monthly-jquery.js"></script>
-  	  <script type="text/javascript" src="../js/monthly.js"></script>
-  	  <script type="text/javascript">
-		  $(window).load( function() {
-			  $('#mycalendar').monthly();
+      <script type="text/javascript" src="../js/monthly.js"></script>
+      <script type="text/javascript">
+      $(window).load( function() {
+        $('#mycalendar').monthly();
       });
       </script>
 
@@ -165,7 +164,6 @@
               dialog.close();
             }
           });
-
           var current_colleges = [
             "Harvard University",
             "Stanford University",
@@ -174,11 +172,10 @@
             "Columbia University",
             "University of California - Berkeley",
           ];
-          
-          // $( "#schoolpicker" ).autocomplete({
-          //   source: current_colleges
-          // });
-          // $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
+          $( "#schoolpicker" ).autocomplete({
+            source: current_colleges
+          });
+          $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
         </script>
 			  <div id="school-checker"
 				style="width:300px; height:735px; position:absolute; margin-left:auto; left:155px; top:95px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); border-style: solid; border-width:1px;">
