@@ -52,7 +52,8 @@ $(function() {
 		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a class="mdl-list__item-primary-content">Recruiter: ' + application.recruiter + '</a></li></ul></div>')
 	}
 
-	var change_to_school_page = function(){
+	var change_to_school_page = function(school){
+		current_school = school;
 		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">+ Add Task</button><div id="buttons-container"><button id="resources-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Resources</button><button id="documents-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Documents</button><div></div></div>');
 		$('#school-name').text(current_school);
 		var application = find_application_by_school(current_school);
@@ -76,7 +77,7 @@ $(function() {
 
 	$('.mdl-navigation__link').click(function(e){
 		current_school = $(this).context.id;
-		change_to_school_page();
+		change_to_school_page(current_school);
 	});
 
 	$('.mdl-layout__content').on('click', '#resources-button', function(){
@@ -91,7 +92,7 @@ $(function() {
 	});
 
 	$('.mdl-layout__content').on('click', '#school_name_link', function(){
-		change_to_school_page();
+		change_to_school_page(current_school);
 	});
 
 	$('.mdl-layout__content').on('click', '#resources-link', function(){
