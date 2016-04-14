@@ -32,7 +32,6 @@ $(function() {
     $( "#schoolpicker" ).autocomplete({
       source: current_colleges
     });
-    // $('#search_applications').append($('#ui-id-1'));
     $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
 
   });

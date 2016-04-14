@@ -21,14 +21,70 @@
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
       <script src="../js/material.min.js"></script>
+      <script src="../models/Task.js"></script>
+      <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
-	  <script type="text/javascript" src="../js/monthly-jquery.js"></script>
-	  <script type="text/javascript" src="../js/monthly.js"></script>
-	  <script type="text/javascript">
+  	  <script type="text/javascript" src="../js/monthly-jquery.js"></script>
+  	  <script type="text/javascript" src="../js/monthly.js"></script>
+  	  <script type="text/javascript">
 		  $(window).load( function() {
 			  $('#mycalendar').monthly();
-		  });
-	  </script>
+      });
+      </script>
+
+      <dialog class="mdl-dialog" id="dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <div class="mdh-expandable-search2 mdl-cell--hide-phone">
+            <form action="#" id="event_name_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Name of Event:</p>
+                <input class="mdl-textfield__input" type="text" id="event_name" style="font-family:'Balthazar', serif" />
+                <label class="mdl-textfield__label" for="event_name"></label>
+              </div>
+            </form>
+            <form action="#" id="date_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Date:</p>
+                <input class="mdl-textfield__input" type="date" id="datepicker" style="font-family:'Balthazar', serif" />
+                <label class="mdl-textfield__label" for="datepicker"></label>
+              </div>
+            </form>
+            <form action="#" id="time_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Time:</p>
+                <input class="mdl-textfield__input" type="time" id="timepicker" style="font-family:'Balthazar', serif" />
+                <label class="mdl-textfield__label" for="timepicker"></label>
+              </div>
+            </form>
+            <form action="#" id="school_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">School:</p>
+                <input class="mdl-textfield__input" type="text" id="schoolpicker" style="font-family:'Balthazar', serif" />
+                <label class="mdl-textfield__label" for="schoolpicker"></label>
+              </div>
+            </form>
+            <!-- Floating Multiline Textfield -->
+            <form action="#" id="description_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Description:</p>
+                <textarea class="mdl-textfield__input" type="text" rows= "2" id="description" style="font-family:'Balthazar', serif" ></textarea>
+                <label class="mdl-textfield__label" for="description"></label>
+              </div>
+            </form>
+          </div>
+          <!-- Displayed on mobile -->
+          <!-- <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop"></div> -->
+          <!-- Search button -->
+          <!-- <button class="mdh-toggle-search mdl-button mdl-js-button mdl-button--icon mdl-cell--hide-tablet mdl-cell--hide-desktop">
+            <i class="material-icons">search</i>
+          </button> -->
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button add">Add</button>
+          <button type="button" class="mdl-button close">Cancel</button>
+        </div>
+      </dialog>
 
       <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -84,9 +140,46 @@
         </header>
         <main class="mdl-layout__content">
 			<div>
-			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
 				style="display:block; width:100%; max-width:400px; margin-right:auto; margin-left:980px; margin-top:30px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); font-family: 'Quattrocento', serif;"> + Add Reminder
 			  </button>
+        <script>
+          $("#add_reminder_button").on("click", function() {
+            var dialog = document.querySelector('dialog');
+            if (! dialog) {
+              dialogPolyfill.registerDialog(dialog);
+            }
+            dialog.showModal();
+          });
+
+          dialog.querySelector('.close').addEventListener('click', function() {
+            // $('#login')[0].reset(); //clear text
+            dialog.close();
+          });
+          dialog.querySelector('.add').addEventListener('click',function() {
+            // add university to homepage
+            var text_input = $('#schoolpicker').val();
+            // check if it is in the array of colleges
+            if (jQuery.inArray(text_input, current_colleges) !== -1) {
+              console.log("yes");
+              dialog.close();
+            }
+          });
+
+          var current_colleges = [
+            "Harvard University",
+            "Stanford University",
+            "Massachusetts Institute of Technology (Sloan)",
+            "Yale University",
+            "Columbia University",
+            "University of California - Berkeley",
+          ];
+          
+          // $( "#schoolpicker" ).autocomplete({
+          //   source: current_colleges
+          // });
+          // $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
+        </script>
 			  <div id="school-checker"
 				style="width:300px; height:735px; position:absolute; margin-left:auto; left:155px; top:95px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); border-style: solid; border-width:1px;">
 				<table id="school-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">

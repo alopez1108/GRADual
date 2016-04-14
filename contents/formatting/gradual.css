@@ -148,3 +148,44 @@ body{
 a{
   color: black;
 }
+
+.mdh-expandable-search2,
+.mdh-expandable-search2 form {
+  display: block;
+}
+
+.mdl-textfield__input {
+  border-bottom-width: 2px 
+}
+
+.mdh-expandable-search,
+.mdh-expandable-search form {
+  /* Cross browser inline-flex */
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+body .ui-autocomplete {
+  /* font-family to all */
+  font-family: 'Balthazar', serif;
+  max-height: 200px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+  /* add padding to account for vertical scrollbar */
+  padding-right: 20px;  
+}
+
+body .ui-autocomplete .ui-menu-item .ui-state-focus {
+   /* selected <a> */
+   background: #B60611;
+   color: #FFFFFF;
+   border-color: #B60611;
+}
+
+#dialog {
+  width: -webkit-fit-content;
+}

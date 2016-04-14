@@ -25,9 +25,9 @@ body .ui-autocomplete {
 
 body .ui-autocomplete .ui-menu-item .ui-state-focus {
    /* selected <a> */
-   background: #3f51b5;
+   background: #B60611;
    color: #FFFFFF;
-   border-color: #3f51b5;
+   border-color: #B60611;
 }
 
 .mdl-textfield__input {
