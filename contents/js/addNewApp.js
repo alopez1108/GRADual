@@ -16,8 +16,9 @@ $(function() {
 		var text_input = $('#search_applications').val();
 		// check if it is in the array of colleges
 		if (jQuery.inArray(text_input, colleges) !== -1) {
-			console.log("yes");
-			// dialog.close();
+			// console.log("yes");
+      $('#search_field')[0].reset(); //clear text
+			dialog.close();
 		}
 	});
 
@@ -85,6 +86,5 @@ $(function() {
     $( "#search_applications" ).autocomplete({
       source: colleges
     });
-    // $('#search_applications').append($('#ui-id-1'));
     $( "#search_applications" ).autocomplete("option", "appendTo", "#dialog");
   });

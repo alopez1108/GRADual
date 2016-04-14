@@ -20,6 +20,8 @@
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
       <script src="../js/material.min.js"></script>
+      <script src="../models/Task.js"></script>
+      <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
 
       <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
@@ -207,8 +209,126 @@
                       <i id="addAppIcon" style="color:#B60611" class="material-icons">add</i>
                       <h2 id="newText" class="mdl-card__title-text" style="align:center">Add New Application</h2>
                     </div>
+                    <dialog class="mdl-dialog" id="dialog">
+                      <div class="mdl-dialog__content">
+                        <!-- Displayed on Computer and Tablet -->
+                        <!-- Search -->
+                        <div class="mdh-expandable-search mdl-cell--hide-phone">
+                          <!-- Simple Textfield -->
+                          <form action="#" id="search_field">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
+                              <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- Displayed on mobile -->
+                        <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop">
+                          <form action="#" id="search_field">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="text" id="search_applications" style="font-family: 'Balthazar', serif">
+                              <label class="mdl-textfield__label" for="search_applications" style="font-family: 'Balthazar', serif">Search...</label>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button add" style="font-family:'Balthazar', serif">Add</button>
+                        <button type="button" class="mdl-button close" style="font-family: 'Balthazar', serif">Cancel</button>
+                      </div>
+                    </dialog>
+                    <!-- Add new application -->
                     <script>
-                      document.getElementById("newCard").addEventListener("click", function() {console.log("New Application Card Clicked")});
+                      $("#newCard").on("click", function() {
+                        console.log("New Application Card Clicked")
+                        var dialog = document.querySelector('dialog');
+                        // var showModalButton = document.querySelector('.show-modal');
+                        if (! dialog) {
+                          dialogPolyfill.registerDialog(dialog);
+                        }
+                        dialog.showModal();
+                      });
+
+                      dialog.querySelector('.close').addEventListener('click', function() {
+                        $('#search_field')[0].reset(); //clear text
+                        console.log("close");
+                        dialog.close();
+                      });
+                      dialog.querySelector('.add').addEventListener('click',function() {
+                        // add university to homepage
+                        var text_input = $('#search_applications').val();
+                        // check if it is in the array of colleges
+                        if (jQuery.inArray(text_input, colleges) !== -1) {
+                          // console.log("yes");
+                          $('#search_field')[0].reset(); //clear text
+                          dialog.close();
+                        }
+                      });
+                      var colleges = [
+                        "Harvard University",
+                        "Stanford University",
+                        "University of Chicago (Booth)",
+                        "University of Pennsylvania (Wharton)",
+                        "Massachusetts Institute of Technology (Sloan)",
+                        "Northwestern University (Kellogg)",
+                        "Yale University",
+                        "Columbia University",
+                        "Cornell University (Johnson)",
+                        "New York University",
+                        "Duke University",
+                        "Vanderbilt University",
+                        "Johns Hopkins University",
+                        "University of Pennsylvania (Perelman)",
+                        "Washington University in St. Louis",
+                        "University of Chicago (Pritzker)",
+                        "University of Michigan - Ann Arbor",
+                        "Cornell University (Weill)",
+                        "Emory University",
+                        "University of North Carolina - Chapel Hill",
+                        "Case Western Reserve University",
+                        "University of Minnesota",
+                        "University of Iowa",
+                        "University of Notre Dame",
+                        "Arizona State University (O'Connor)",
+                        "Boston University",
+                        "University of Texas - Austin",
+                        "Georgetown University",
+                        "University of Virginia",
+                        "University of California - Berkeley",
+                        "Dartmouth College (Tuck)",
+                        "Carnegie Mellon University (Tepper)",
+                        "Indiana University (Kelley)",
+                        "Rice University (Jones)",
+                        "Vanderbilt University (Owen)",
+                        "Georgetown University (McDonough)",
+                        "Washington University in St. Louis (Olin)",
+                        "New York University (Stern)",
+                        "University of Alabama",
+                        "George Washington University",
+                        "University of California - Irvine",
+                        "Boston College",
+                        "University of California - Davis",
+                        "University of Georgia",
+                        "Baylor College of Medicine",
+                        "Mayo Medical School",
+                        "University of Rochester",
+                        "Ohio State University",
+                        "Brown University (Alpert)",
+                        "Dartmouth College (Geisel)",
+                        "University of Cincinnati",
+                        "University of Maryland",
+                        "University of Utah",
+                        "Tufts University",
+                        "Ohio State University (Moritz)",
+                        "University of Wisconsin - Madison",
+                        "Fordham University",
+                        "University of Arizona (Rogers)",
+                        "Wake Forest University"
+                      ];
+                      $( "#search_applications" ).autocomplete({
+                        source: colleges
+                      });
+                      $( "#search_applications" ).autocomplete("option", "appendTo", "#dialog");  
                     </script>
                   </div>
                 </td>
