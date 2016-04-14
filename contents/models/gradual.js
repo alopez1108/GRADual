@@ -8,6 +8,9 @@ $(function() {
 	applications.push(new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/"));
 	applications.push(new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/"));
 	applications.push(new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php"));
+	applications.push(new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/"));
+	applications.push(new Application("Yale", "September 1", "recruiter@yale.edy", "http://gsas.yale.edu/"));
+	applications.push(new Application("Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/"));
 
 
 
@@ -38,7 +41,7 @@ $(function() {
 	}
 
 	var change_to_documents = function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Resources </div>');
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Documents </div>');
 	}
 
 	var change_to_phone_numbers= function(){

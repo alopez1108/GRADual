@@ -30,6 +30,24 @@
                 mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
+          <button id= "homeButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            Home
+          </button>
+          <script>
+            document.getElementById("homeButton").addEventListener("click", function() {console.log("Go to Home Page")});
+          </script>
+          <button id= "calendarButton" style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            Calendar
+          </button>
+          <script>
+            document.getElementById("calendarButton").addEventListener("click", function() {console.log("Go to Calendar Page")});
+          </script>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-layout-spacer"></div>
+          <span id="gradual">GRADual</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                       mdl-textfield--floating-label mdl-textfield--align-right">
             <label class="mdl-button mdl-js-button mdl-button--icon"
@@ -41,20 +59,23 @@
                      id="fixed-header-drawer-exp">
             </div>
           </div>
-          <div class="mdl-layout-spacer"></div>
-          <button style="color:white" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-            Schedule
+          <button id="notificationsButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="3">notifications</i>
           </button>
-          <div class="mdl-layout-spacer"></div>
-          <span id="gradual">GRADual</span>
-          <div class="mdl-layout-spacer"></div>
-          <div class="mdl-layout-spacer"></div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-            <i style="height:12px" id="bell" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2">notifications</i>
-          </button>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="notificationsButton">
+            <li class="mdl-menu__item">Interview in 6 Hours</li>
+            <li class="mdl-menu__item">You've been accepted to Yale!</li>
+            <li class="mdl-menu__item">Harvard Application due on Monday</li>
+          </ul>
+          <script>
+            document.getElementById("notificationsButton").addEventListener("click", function() {console.log("Show Notifications")});
+          </script>
+          <button id="userButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
             <i style="color:white" class="material-icons">account_box</i>
           </button>
+          <script>
+            document.getElementById("userButton").addEventListener("click", function() {console.log("Go to User Info Page")});
+          </script>
         </div>
       </header>
       <div class="mdl-layout__drawer">
