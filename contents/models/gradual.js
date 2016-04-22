@@ -35,22 +35,22 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Resources </div>');
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   Resources </div>');
 		var application = find_application_by_school(current_school);
 		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Important Phone Numbers</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Important Emails</a></li></ul></div>')
 	}
 
 	var change_to_documents = function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   Documents </div>');
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   Documents </div>');
 	}
 
 	var change_to_phone_numbers= function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   <a id="resources-link"> Resources</a>    >>>>>   Phone Numbers</div>');
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   <a id="resources-link"> Resources</a>    >>>>>   Phone Numbers</div>');
 		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a class="mdl-list__item-primary-content">Recruiter: (+1) 555 - 555 - 5555</a></li></ul></div>');
 	}
 
 	var change_to_emails= function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >>>>>   <a id="resources-link"> Resources</a>    >>>>>   Emails</div>');
+		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   <a id="resources-link"> Resources</a>    >>>>>   Emails</div>');
 		var application = find_application_by_school(current_school);
 		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a class="mdl-list__item-primary-content">Recruiter: ' + application.recruiter + '</a></li></ul></div>')
 	}
@@ -79,8 +79,9 @@ $(function() {
 	$('#side-drawers').replaceWith('<nav id="side-drawers" class="mdl-navigation">' + replace_side_bar + '</nav>');
 
 	$('.mdl-navigation__link').click(function(e){
-		current_school = $(this).context.id;
-		change_to_school_page(current_school);
+		// current_school = $(this).context.id;
+		// change_to_school_page(current_school);
+		location.href = "./headWithSideBar.html?="+$(this).context.id
 	});
 
 	$('.mdl-layout__content').on('click', '#resources-button', function(){

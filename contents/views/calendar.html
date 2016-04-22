@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="../css/monthly.css">
+	  <link rel="stylesheet" href="../css/monthly.css">
 
   </head>
   <body id="homepage">
@@ -37,37 +37,37 @@
           <div class="mdh-expandable-search2 mdl-cell--hide-phone">
             <form action="#" id="event_name_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Name of Event:</p>
-                <input class="mdl-textfield__input" type="text" id="event_name" style="font-family:'Balthazar', serif" />
+                <p style="margin: 0px; font-size: 18px">Name of Event:</p>
+                <input class="mdl-textfield__input" type="text" id="event_name"/>
                 <label class="mdl-textfield__label" for="event_name"></label>
               </div>
             </form>
             <form action="#" id="date_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Date:</p>
-                <input class="mdl-textfield__input" type="date" id="datepicker" style="font-family:'Balthazar', serif" />
+                <p style="margin: 0px; font-size: 18px">Date:</p>
+                <input class="mdl-textfield__input" type="date" id="datepicker"/>
                 <label class="mdl-textfield__label" for="datepicker"></label>
               </div>
             </form>
             <form action="#" id="time_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Time:</p>
-                <input class="mdl-textfield__input" type="time" id="timepicker" style="font-family:'Balthazar', serif" />
+                <p style="margin: 0px; font-size: 18px">Time:</p>
+                <input class="mdl-textfield__input" type="time" id="timepicker"/>
                 <label class="mdl-textfield__label" for="timepicker"></label>
               </div>
             </form>
             <form action="#" id="school_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">School:</p>
-                <input class="mdl-textfield__input" type="text" id="schoolpicker" style="font-family:'Balthazar', serif" />
+                <p style="margin: 0px; font-size: 18px">School:</p>
+                <input class="mdl-textfield__input" type="text" id="schoolpicker"/>
                 <label class="mdl-textfield__label" for="schoolpicker"></label>
               </div>
             </form>
             <!-- Floating Multiline Textfield -->
             <form action="#" id="description_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="font-family:'Balthazar', serif; margin: 0px; font-size: 18px">Description:</p>
-                <textarea class="mdl-textfield__input" type="text" rows= "2" id="description" style="font-family:'Balthazar', serif" ></textarea>
+                <p style="margin: 0px; font-size: 18px">Description:</p>
+                <textarea class="mdl-textfield__input" type="text" rows= "2" id="description"></textarea>
                 <label class="mdl-textfield__label" for="description"></label>
               </div>
             </form>
@@ -87,6 +87,10 @@
 
       <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">My Applications</span>
+        <nav id="side-drawers" class="mdl-navigation"></nav>
+      </div>
         <header class="mdl-layout__header">
           <div class="mdl-layout__header-row">
             <a href="./homepage.html">

@@ -1,3 +1,8 @@
+html *
+{
+  font-family: 'Quattrocento', serif;
+}
+/*li { cursor: pointer; }*/
 body{
   background-color: #eee;
 }
@@ -10,6 +15,7 @@ body{
 	font-family: 'Quattrocento', serif;
 	font-size: 250%;
 	text-align: center;
+  cursor: default;
 }
 
 #calendarButton {
@@ -26,6 +32,7 @@ body{
 .demo-card-square.mdl-card {
   width: 310px;
   height: 310px;
+  cursor: pointer;
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
@@ -90,6 +97,7 @@ body{
 
 #school-name {
   padding-left: 3%;
+  cursor: default;
 }
 
 #resources-button {
@@ -112,6 +120,12 @@ body{
 .mdl-layout__header {
 	background-color: #B60611;
 }
+
+.mdl-layout-title {
+  font-family: 'Quattrocento', serif;
+  font-weight: bold;
+}
+
 
 #addAppIcon {
 	position: absolute;
@@ -155,7 +169,21 @@ a{
 }
 
 .mdl-textfield__input {
-  border-bottom-width: 2px 
+  border-bottom-width: 2px; 
+  font-family: 'Quattrocento', serif;
+}
+
+.mdl-textfield__label {
+  border-bottom-width: 2px; 
+  font-family: 'Quattrocento', serif;
+}
+
+.mdl-button {
+  font-family: 'Quattrocento', serif;
+}
+
+.mdl-data-table__cell--non-numeric {
+  cursor: default;
 }
 
 .mdh-expandable-search,
@@ -170,7 +198,7 @@ a{
 
 body .ui-autocomplete {
   /* font-family to all */
-  font-family: 'Balthazar', serif;
+  font-family: 'Quattrocento', serif;
   max-height: 200px;
   overflow-y: auto;
   /* prevent horizontal scrollbar */
@@ -188,4 +216,8 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 
 #dialog {
   width: -webkit-fit-content;
+}
+
+#tasksBar {
+  background-color: #607D8B;
 }
