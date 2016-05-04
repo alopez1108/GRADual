@@ -285,3 +285,14 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   background: white;
   margin: 20px 30px 20px 20px;
 }
+
+#recruiter-info {
+  background: white;
+  width: 95%;
+  padding: 10px;
+}
+
+#app-portal-button {
+  margin-bottom: 20px;
+  left: 40%;
+}
