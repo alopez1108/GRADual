@@ -38,6 +38,11 @@ $(function() {
 			}
 		});
 	}
+
+	$("#logout").click(function() {
+		window.location.replace("./login.html");
+	});
+
     var college_to_shorthand ={ 
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
@@ -255,7 +260,9 @@ $(function() {
 
 	if (on_school_page == true){
 	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
-	    console.log(checkboxes);
+	    console.log("HELLLLOOO");
+	    console.table(checkboxes);
+	    console.log("GOODBYE");
 	  	for (var i = 0; i < checkboxes.length; i++) {
 	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
 	  		console.log(task_name);
@@ -266,6 +273,7 @@ $(function() {
 	    		// find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
 	    		// console.log(find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent]);
 	    		for (i = 0; i < find_application_by_school(current_school).tasks.length; i ++) {
+	    			console.log(find_application_by_school(current_school).tasks[i]);
 	    			find_application_by_school(current_school).tasks[i] = true;
 	    		}
 	    		console.log(find_application_by_school(current_school).tasks);
