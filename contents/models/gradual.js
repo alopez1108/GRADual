@@ -50,37 +50,16 @@ $(function() {
 	    "University of Chicago (Booth)" : "UChicago",
 	    "University of Pennsylvania (Wharton)" : "Penn",
 	    "Massachusetts Institute of Technology (Sloan)" : "MIT",
-	    "Northwestern University (Kellogg)" : "Northwestern",
 	    "Yale University" : "Yale",
 	    "Columbia University" : "Columbia",
 	    "Cornell University (Johnson)" : "Cornell",
-	    "New York University" : "NYU",
 	    "Duke University" : "Duke",
-	    "Vanderbilt University" : "Vanderbilt",
-	    "Johns Hopkins University" : "Johns Hopkins",
-	    "Washington University in St. Louis" : "WashU",
-	    "University of Michigan - Ann Arbor" : "UMich",
-	    "Emory University" : "Emory",
-	    "University of North Carolina - Chapel Hill" : "UNC",
 	    "University of Notre Dame" : "NotreDame",
-	    "Boston University" : "BU",
-	    "University of Texas - Austin" : "UT",
 	    "Georgetown University" : "Georgetown",
 	    "University of Virginia" : "UVA",
-	    "University of California - Berkeley" : "Berkeley",
-	    "Dartmouth College (Tuck)" : "Dartmouth",
-	    "Carnegie Mellon University (Tepper)" : "CMU",
+	    "University of California - Berkeley" : "UCBerkeley",
 	    "Rice University (Jones)" : "Rice",
 	    "Boston College" : "BC",
-	    "University of California - Davis" : "Davis",
-	    "University of Georgia" : "UGA",
-	    "University of Rochester" : "Rochester",
-	    "Ohio State University" : "Ohio State",
-	    "Brown University (Alpert)" : "Brown",
-	    "University of Maryland" : "UMD",
-	    "University of Utah" : "Utah",
-	    "Tufts University" : "Tufts",
-	    "University of Wisconsin - Madison" : "Wisconsin",
 	};
 
 	//Hard code in schools for prototype
@@ -88,9 +67,17 @@ $(function() {
 	apps_dict["Stanford"] = new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/", "../images/Stanfordpic.jpg");
 	apps_dict["Harvard"] = new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php", "../images/Harvardpic.jpg");
 	apps_dict["Columbia"] = new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/", "../images/Columbiapic.jpg");
-	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edy", "http://gsas.yale.edu/", "../images/Yalepic.jpg");
-	apps_dict["Berkeley"] = new Application("Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg");
-
+	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edu", "http://gsas.yale.edu/", "../images/Yalepic.jpg");
+	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg");
+	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg");
+	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg");
+	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg");
+	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg");
+	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg");
+	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg");
+	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg");
+	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg");
+	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg");
 	//////////////////////
 	// Search Applications 
 
@@ -213,6 +200,7 @@ $(function() {
 	}
 
 	var create_school_card = function(application){
+		console.log(application);
 		var card_string = '';
 		card_string = card_string + "<td>";
 		card_string = card_string + "<a href='./headWithSideBar.html?=" + application.school +  "''>";
@@ -223,6 +211,7 @@ $(function() {
 		card_string = card_string + "<div class='mdl-card__actions mdl-card--border'>";
 		card_string = card_string + "<div id=" + application.school.toLowerCase() + "Progress" + " class='mdl-progress mdl-js-progress'></div></div>";
 		card_string = card_string + "</div></a></td>";
+		console.log(card_string);
 		return card_string;
 	}
 
@@ -302,10 +291,7 @@ $(function() {
 	    var text_input = $('#search_applications').val();
 	    // check if it is in the array of colleges
 	    if (jQuery.inArray(text_input, colleges) !== -1) {
-	    	var app_string = text_input.split(" ")[0];
-	    	if (app_string == "Massachusetts"){
-	    		app_string = "MIT";
-	    	}
+	    	app_string = college_to_shorthand[text_input]
 	    	sessionStorage.setItem(app_string, JSON.stringify(apps_dict[app_string]));
 	        $('#search_field')[0].reset(); //clear text
 	        dialog.close();
@@ -321,36 +307,16 @@ $(function() {
 	    "University of Chicago (Booth)",
 	    "University of Pennsylvania (Wharton)",
 	    "Massachusetts Institute of Technology (Sloan)",
-	    "Northwestern University (Kellogg)",
 	    "Yale University",
 	    "Columbia University",
 	    "Cornell University (Johnson)",
-	    "New York University",
 	    "Duke University",
-	    "Vanderbilt University",
-	    "Johns Hopkins University",
-	    "Washington University in St. Louis",
-	    "University of Michigan - Ann Arbor",
-	    "University of North Carolina - Chapel Hill",
 	    "University of Notre Dame",
-	    "Boston University",
-	    "University of Texas - Austin",
 	    "Georgetown University",
 	    "University of Virginia",
 	    "University of California - Berkeley",
-	    "Dartmouth College (Tuck)",
-	    "Carnegie Mellon University (Tepper)",
 	    "Rice University (Jones)",
-	    "Vanderbilt University (Owen)",
-	    "Georgetown University (McDonough)",
-	    "Washington University in St. Louis (Olin)",
-	    "New York University (Stern)",
 	    "Boston College",
-	    "University of California - Davis",
-	    "Brown University (Alpert)",
-	    "University of Maryland",
-	    "University of Utah",
-	    "Tufts University",
     ];
 
     $( "#search_applications" ).autocomplete({
