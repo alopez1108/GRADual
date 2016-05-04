@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
-	  <link rel="stylesheet" href="../css/monthly.css">
+	  <link rel='stylesheet' href='../fullcalendar/fullcalendar.css' />
 
   </head>
   <body id="homepage">
@@ -24,10 +24,13 @@
       <script src="../models/Task.js"></script>
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
-      <script type="text/javascript" src="../js/monthly.js"></script>
+	  <script src='../fullcalendar/lib/moment.min.js'></script>
+	  <script src='../fullcalendar/fullcalendar.js'></script>
       <script type="text/javascript">
-      $(window).load( function() {
-        $('#mycalendar').monthly();
+      $(document).ready(function() {
+        $('#calendar').fullCalendar({
+		
+		});
       });
       </script>
 
@@ -213,9 +216,7 @@
 				  </tbody>
 				</table>
 			  </div>
-			  <div class="calendar" style="width:100%; max-width:700px; display:block; margin-right:auto; margin-left:540px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); margin-top:30px; border-style: solid; border-width:1px;">
-				<div class="monthly" id="mycalendar">
-				</div>
+			  <div id="calendar">
 			  </div>
 			</div>
         </main>
