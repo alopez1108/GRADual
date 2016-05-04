@@ -461,8 +461,10 @@ $(function() {
     dialog.querySelector('.add').addEventListener('click',function() {
 	    // add university to homepage
 	    var text_input = $('#search_applications').val();
+	    console.log(text_input);
 	    // check if it is in the array of colleges
-	    if (jQuery.inArray(text_input, colleges) !== -1) {
+	    console.log(sessionStorage.getItem(college_to_shorthand[text_input]));
+	    if (jQuery.inArray(text_input, colleges) !== -1 && sessionStorage.getItem(college_to_shorthand[text_input])==null) {
 	    	app_string = college_to_shorthand[text_input]
 	    	console.log(app_string);
 	    	console.log("HEREWEGO");
@@ -477,6 +479,21 @@ $(function() {
 			var snackbarContainer = document.querySelector('#applicationAddedNotice');
 			var data = {
 				message: shorthand_to_common_name[app_string] +' Application Added!',
+			};
+          	snackbarContainer.MaterialSnackbar.showSnackbar(data);
+	    } else if(sessionStorage.getItem(college_to_shorthand[text_input])!=null) {
+	    	window['counter'] = 0;
+			var snackbarContainer = document.querySelector('#addFailNotice');
+			var data = {
+				message: "Application already exists.",
+			};
+          	snackbarContainer.MaterialSnackbar.showSnackbar(data);
+	    }
+	    else {
+	    	window['counter'] = 0;
+			var snackbarContainer = document.querySelector('#addFailNotice');
+			var data = {
+				message: "Not a valid school.   Please try again.",
 			};
           	snackbarContainer.MaterialSnackbar.showSnackbar(data);
 	    }
