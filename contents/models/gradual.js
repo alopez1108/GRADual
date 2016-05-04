@@ -293,7 +293,7 @@ $(function() {
 	var change_to_school_page = function(school){
 		current_school = school;
 		on_school_page = true;
-		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table><table id="done-list" class="mdl-data-table mdl-js-data-table"></table></div><div id="buttons"></div></div><div id="documents">HI BITCHES</div></div>');
+		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table><table id="done-list" class="mdl-data-table mdl-js-data-table"></table></div><div id="buttons"></div><div id="documents"></div></div>');
 		$('#school-name').text(current_school);
 		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
@@ -311,18 +311,25 @@ $(function() {
 				i = i + 1; 
 			}
 		}
-		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-shadow--2dp"><tbody>' + replace_tasks + '</tbody></table>'
+		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table"><tbody>' + replace_tasks + '</tbody></table>'
 		);
 		if (finished_tasks == 0){
 			//make table invisible
-			// $('#done-list').hide();
+			$('#done-list').hide();
 		}
 		else {
-			// $('#done-list').show();
+			$('#done-list').show();
 			$('#done-list').replaceWith('<table id="done-list" class="mdl-data-table mdl-js-data-table"><tbody>' + done_tasks + '</tbody></table>');
 		}
 		change_to_resources();
 		componentHandler.upgradeAllRegistered();
+		$('#documents').replaceWith('<div id="documents"><h5 id="documents-label">Documents</h5><form id="docs-form"><div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label class="mdl-textfield__label" for="sample1">Essay title</label></div><div class="mdl-textfield mdl-js-textfield"><textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea><label class="mdl-textfield__label" for="sample5">Write your essay here...</label></div></form><button name="data" id="save-button" type="button" class="mdl-button mdl-js-button mdl-button--raised">Save</button></div>')
+	}
+
+	if (on_school_page == true){
+		document.getElementById('save-button').addEventListener(function(){
+			console.log("fskdjflkjdfad");
+		})
 	}
 
 	var replace_side_bar =''; 

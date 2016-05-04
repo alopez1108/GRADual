@@ -95,6 +95,7 @@ body{
   left: 60%;
   width: 40%;
   display: inline-block;
+  position: absolute;
 }
 
 #task-list {
@@ -316,13 +317,13 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 
 #recruiter-info {
   background: white;
-  width: 95%;
-  padding: 10px;
+  width: 85%;
+  padding: 20px;
 }
 
 #app-portal-button {
   margin-bottom: 20px;
-  left: 40%;
+  left: 27%;
 }
 
 .school_1 {
@@ -385,6 +386,21 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 	background-color: #00ffff;
 }
 
+#documents-label{
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+#docs-form{
+  padding-left: 30px;
+  width: 57%;
+  padding-bottom: 10px;
+}
+
+#save-button{
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
 
 
 
