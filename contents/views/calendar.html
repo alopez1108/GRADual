@@ -13,10 +13,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
-	  <link rel='stylesheet' href='../fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' href='../fullcalendar/fullcalendar.css' />
 
-  </head>
-  <body id="homepage">
     <!-- Dependencies -->
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -24,16 +22,19 @@
       <script src="../models/Task.js"></script>
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
+	  <script src='../fullcalendar/lib/jquery.min.js'></script>
 	  <script src='../fullcalendar/lib/moment.min.js'></script>
 	  <script src='../fullcalendar/fullcalendar.js'></script>
       <script type="text/javascript">
       $(document).ready(function() {
         $('#calendar').fullCalendar({
-		
+			aspectRatio: 1.8
 		});
       });
       </script>
-
+	</head>
+	  
+	<body id="homepage">
       <dialog class="mdl-dialog" id="dialog">
         <div class="mdl-dialog__content">
           <!-- Displayed on Computer and Tablet -->
@@ -136,10 +137,7 @@
           </div>
         </header>
         <main class="mdl-layout__content">
-			<div>
-			  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
-				style="display:block; width:100%; max-width:300px; margin-right:auto; margin-left:740px; margin-top:30px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); font-family: 'Quattrocento', serif;"> + Add Reminder
-			  </button>
+			
         <script>
           $("#add_reminder_button").on("click", function() {
             var dialog = document.querySelector('dialog');
@@ -176,15 +174,15 @@
           $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
         </script>
 			  <div id="school-checker"
-				style="width:250px; height:560px; position:absolute; margin-left:auto; left:155px; top:95px; box-shadow: 0 13px 40px rgba(0, 0, 0, 0.5); border-style: solid; border-width:1px;">
+				style="width:13%; position:absolute; margin-left:5%; margin-right:auto; margin-top:10%; border-style:solid; border-width:0px; border-color:;">
 				<table id="school-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
-				  <thead>
+				  <thead style="background-color:#eee;">
 					<tr>
 					  <th class="mdl-data-table__cell--non-numeric" style="height:80px; text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;">All Schools</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
+				  <tbody style="background-color:#eee;">
+					<tr style="background-color:#eee;">
 					  <td id="task-name1" class="mdl-data-table__cell--non-numeric" bgcolor="#ff4d4d" style="height:80px; width:80%; font-family: 'Quattrocento', serif; font-weight: bold;">MIT</td>
 					</tr>
 					<tr>
@@ -205,9 +203,12 @@
 				  </tbody>
 				</table>
 			  </div>
-			  <div id="calendar">
+			  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
+				  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
+					style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:30px; font-family: 'Quattrocento', serif;"> + Add Reminder
+				  </button>
+				  <div id="calendar"></div>
 			  </div>
-			</div>
         </main>
       </div>
   </body>
