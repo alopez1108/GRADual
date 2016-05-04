@@ -40,16 +40,13 @@
 			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
 			row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
 			row_string = row_string + application.school + "</td></tr>";
-			console.log($('#calendar'));
-			console.log(application.events);
 			$('#calendar').fullCalendar("addEventSource", application.events);
-			console.log(row_string);
 			return row_string;
 		}
 
 		var create_school_list = function(){
 			var table_string = "<table id='school-list'";
-			table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"; 
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
 			table_string = table_string + "<thead style='background-color:#eee;'>";
 			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
 			table_string = table_string + "<tbody style='background-color:#eee;'>";
@@ -58,9 +55,20 @@
 				table_string = table_string + create_new_school_row(application);
 			}
 			table_string = table_string + "</tbody></table>";
-			console.log(table_string);
 			return table_string;
 		}
+		
+		var create_modal_school_list = function(){
+			var list_string = "<select class='mdl-textfield__input' type='text' id='schoolpicker'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				list_string = list_string + "<option>" + application.school + "</option>";
+			}
+			list_string = list_string + "</select>";
+			return list_string;
+		}
+		
+		$('#schoolpicker').replaceWith(create_modal_school_list());
 		$('#school-list').replaceWith(create_school_list());
 	  });
 	  </script>
@@ -88,30 +96,14 @@
             <form action="#" id="time_form">
               <div class="mdl-textfield mdl-js-textfield">
                 <p style="margin: 0px; font-size: 18px">Time:</p>
-                <input class="mdl-textfield__input" type="time" id="timepicker"/>
+                <input class="mdl-textfield__input" type="time" id="timepicker">
                 <label class="mdl-textfield__label" for="timepicker"></label>
               </div>
             </form>
             <form action="#" id="school_form">
               <div class="mdl-textfield mdl-js-textfield">
                 <p style="margin: 0px; font-size: 18px">School:</p>
-                <select class="mdl-textfield__input" type="text" id="schoolpicker"/>
-                  <option>Harvard University</option>
-                  <option>Stanford University</option>
-                  <option>University of Chicago (Booth)</option>
-                  <option>University of Pennsylvania (Wharton)</option>
-                  <option>Massachusetts Institute of Technology (Sloan)</option>
-                  <option>Yale University</option>
-                  <option>Columbia University</option>
-                  <option>Cornell University (Johnson)</option>
-                  <option>Duke University</option>
-                  <option>University of Notre Dame</option>
-                  <option>Georgetown University</option>
-                  <option>University of Virginia</option>
-                  <option>University of California - Berkeley</option>
-                  <option>Rice University (Jones)</option>
-                  <option>Boston College</option>
-                </select>
+                <select id="schoolpicker"></select>
                 <label class="mdl-textfield__label" for="schoolpicker"></label>
               </div>
             </form>
@@ -184,7 +176,7 @@
         </header>
         <main class="mdl-layout__content">
 			  <div id="school-checker"
-				style="position:absolute; width:15%; margin-left:7%; margin-right:auto; margin-top:10%;">
+				style="position:absolute; width:25%; margin-left:7%; margin-right:auto; margin-top:10%;">
 				<table id="school-list"></table>
 			  </div>
 			  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
@@ -227,9 +219,58 @@
           var time = $('#timepicker').val();
           var school = $('#schoolpicker').val();
           var description = $('#description').val();
+		  var eventColor = "black";
 
           if (name.length > 0 && date.length > 0 && time.length > 0 && school.length >0 && description.length > 0) {
             reminders.push([name,date,time,school,description]);
+			console.log(reminders);
+			if (school == "MIT"){
+				eventColor = "#ff4d4d";
+			}
+			else if (school == "Stanford"){
+				eventColor = "#6666ff";
+			}
+			else if (school == "Harvard"){
+				eventColor = "#ff80ff";
+			}
+			else if (school == "Columbia"){
+				eventColor = "#ff8c1a";
+			}
+			else if (school == "Yale"){
+				eventColor = "#ffff33";
+			}
+			else if (school == "UCBerkeley"){
+				eventColor = "#80ff80";
+			}
+			else if (school == "Cornell"){
+				eventColor = "#999999";
+			}
+			else if (school == "NotreDame"){
+				eventColor = "#ff9f80";
+			}
+			else if (school == "BC"){
+				eventColor = "#cce0ff";
+			}
+			else if (school == "Duke"){
+				eventColor = "#ffb3b3";
+			}
+			else if (school == "Georgetown"){
+				eventColor = "#ffb366";
+			}
+			else if (school == "Rice"){
+				eventColor = "#ffffb3";
+			}
+			else if (school == "UChicago"){
+				eventColor = "#ccffcc";
+			}
+			else if (school == "UVA"){
+				eventColor = "#d9d9d9";
+			}
+			else if (school == "UPenn"){
+				eventColor = "#00ffff";
+			}
+			
+			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor}]});
             dialog.close();
           }
         });
