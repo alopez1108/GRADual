@@ -39,8 +39,7 @@ body{
 }
 
 .demo-card-square {
-  margin-left: 40px;
-  margin-top: 40px;
+  margin: 20px;
   position: relative;
 }
 
@@ -252,7 +251,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   right: 30%;
 }
 
-#wordBox {
+#wordBox {  
   position: absolute;
   top: 35%;
   bottom: 35%;
@@ -275,6 +274,14 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   width: 100%;
 }
 
+.application_card {
+  display: inline-block;
+}
+
+#homepage-table {
+  text-align: -webkit-center;
+}
+
 #task-name-done{
   padding-left: 85px;
   text-decoration: line-through;
@@ -284,4 +291,15 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   display: block;
   background: white;
   margin: 20px 30px 20px 20px;
+}
+
+#recruiter-info {
+  background: white;
+  width: 95%;
+  padding: 10px;
+}
+
+#app-portal-button {
+  margin-bottom: 20px;
+  left: 40%;
 }
