@@ -27,6 +27,24 @@
       <script type="text/javascript">
       $(document).ready(function() {
         $('#calendar').fullCalendar({
+			eventClick: function(calEvent, jsEvent, view) {
+			  if(calEvent.time != null){
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time);
+				}
+			  }
+			  else{
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59" + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59");
+				}
+			  }
+			},
 			aspectRatio: 1.8,
 			eventTextColor: 'black',
 		});
@@ -38,7 +56,7 @@
 			var row_string = '';
 			row_string = row_string + "<tr><td ";
 			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
-			row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
+			row_string = row_string + " style='font-family: Quattrocento, serif; font-weight: bold; width: 300px;'>";
 			row_string = row_string + application.school + "</td></tr>";
 			$('#calendar').fullCalendar("addEventSource", application.events);
 			return row_string;
@@ -46,8 +64,8 @@
 
 		var create_school_list = function(){
 			var table_string = "<table id='school-list'";
-			table_string = table_string + " class='mdl-data-table mdl-js-data-table' style='width: 100%;'>"; 
-			table_string = table_string + "<thead style='background-color:#eee;'>";
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
+			table_string = table_string + "<thead style='background-color:#FFFFFF;'>";
 			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
 			table_string = table_string + "<tbody style='background-color:#eee;'>";
 			for (i = 0; i < sessionStorage.length; i++){
@@ -74,8 +92,7 @@
 	  </script>
 	</head>
 	  
-	<body id="homepage">
-      <dialog class="mdl-dialog" id="dialog">
+	  <dialog class="mdl-dialog" id="dialog">
         <div class="mdl-dialog__content">
           <!-- Displayed on Computer and Tablet -->
           <div class="mdh-expandable-search2 mdl-cell--hide-phone">
@@ -122,6 +139,115 @@
           <button id="cancel_button" type="button" class="mdl-button">Cancel</button>
         </div>
       </dialog>
+	  
+	  <dialog class="mdl-dialog" id="reminder_dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <div class="mdh-expandable-search2 mdl-cell--hide-phone">
+            <form action="#" id="reminder_name_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Name of Reminder:</p>
+                <p id="confirmed_reminder_name" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="date_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Date:</p>
+                <p id="confirmed_date" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="time_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Time:</p>
+                <p id="confirmed_time" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="school_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">School:</p>
+                <p id="confirmed_school" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <!-- Floating Multiline Textfield -->
+            <form action="#" id="description_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Description:</p>
+                <p id="confirmed_description" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button id="close_button" type="button" class="mdl-button">Close</button>
+        </div>
+      </dialog>
+	  
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('#calendar').fullCalendar({
+            eventClick: function(calEvent, jsEvent, view) {
+			  $('#confirmed_reminder_name').text(calEvent.title);
+			   $('#confirmed_date').text(calEvent.start);
+			    $('#confirmed_time').text(calEvent.time);
+				 $('#confirmed_school').text(calEvent.school);
+				  $('#confirmed_description').text(calEvent.description);
+              var dialog = document.getElementById("reminder_dialog")
+              dialog.showModal();
+              document.getElementById("close_button").addEventListener('click', function() {
+                dialog.close();
+              });
+            },
+            aspectRatio: 1.8,
+            eventTextColor: 'black',
+          });
+        });
+      </script>
+	  <script type="text/javascript">
+	  $(document).ready(function() {
+		var create_new_school_row = function(application){
+			var row_string = '';
+			row_string = row_string + "<tr><td ";
+			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
+			row_string = row_string + " style='font-family: Quattrocento, serif; font-weight: bold; width: 300px;'>";
+			row_string = row_string + application.school + "</td></tr>";
+			$('#calendar').fullCalendar("addEventSource", application.events);
+			return row_string;
+		}
+
+		var create_school_list = function(){
+			var table_string = "<table id='school-list'";
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
+			table_string = table_string + "<thead style='background-color:#eee;'>";
+			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
+			table_string = table_string + "<tbody style='background-color:#eee;'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				table_string = table_string + create_new_school_row(application);
+			}
+			table_string = table_string + "</tbody></table>";
+			return table_string;
+		}
+		
+		var create_modal_school_list = function(){
+			var list_string = "<select class='mdl-textfield__input' type='text' id='schoolpicker'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				list_string = list_string + "<option>" + application.school + "</option>";
+			}
+			list_string = list_string + "</select>";
+			return list_string;
+		}
+		
+		$('#schoolpicker').replaceWith(create_modal_school_list());
+		$('#school-list').replaceWith(create_school_list());
+	  });
+	  </script>
+	</head>
+	  
+	<body id="homepage">
+	
+      
+
 
       <!-- Source: https://www.getmdl.io/components/index.html#layout-section -->
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -169,7 +295,6 @@
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="demo-menu-lower-right">
-              <li id="userInfo" class="mdl-menu__item">User Informaton</li>
               <li id="logout" class="mdl-menu__item">Log Out</li>
             </ul>
           </div>
@@ -179,14 +304,14 @@
 				<tr>
 					<td>
 						  <div id="school-checker"
-							style="width:100%; margin-left:100%; margin-right:auto;">
+							style="width:150%; margin-left:130%; margin-right:auto;">
 							<table id="school-list"></table>
 						  </div>
 					</td>
 					<td>
 						  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
 							  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
-								style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif;"> + Add Reminder
+								style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif; background-color:rgb(96,125,139);"> + Add Reminder
 							  </button>
 							  <div id="calendar"></div>
 						  </div>
@@ -247,16 +372,16 @@
 			else if (school == "Yale"){
 				eventColor = "#ffff33";
 			}
-			else if (school == "UCBerkeley"){
+			else if (school == "UC Berkeley"){
 				eventColor = "#80ff80";
 			}
 			else if (school == "Cornell"){
 				eventColor = "#999999";
 			}
-			else if (school == "NotreDame"){
+			else if (school == "Notre Dame"){
 				eventColor = "#ff9f80";
 			}
-			else if (school == "BC"){
+			else if (school == "Boston College"){
 				eventColor = "#cce0ff";
 			}
 			else if (school == "Duke"){
@@ -278,7 +403,7 @@
 				eventColor = "#00ffff";
 			}
 			
-			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor}]});
+			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor, time : time, description : description, school : school}]});
 			dialog.close();
 			for (i = 0; i < sessionStorage.length; i++){
 				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));

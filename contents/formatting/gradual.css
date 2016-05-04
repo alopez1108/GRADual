@@ -289,6 +289,9 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   right: 10%;
   bottom: 15%;
 }
+.fc-view-container {
+  background-color: white;
+}
 
 .mdl-textfield {
   width: 100%;
