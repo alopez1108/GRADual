@@ -27,6 +27,8 @@
       <script type="text/javascript">
       $(document).ready(function() {
         $('#calendar').fullCalendar({
+			eventClick: function(calEvent, jsEvent, view) {
+				alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time + "\n" + 'Description: ' + calEvent.description);},
 			aspectRatio: 1.8,
 			eventTextColor: 'black',
 		});
@@ -38,7 +40,7 @@
 			var row_string = '';
 			row_string = row_string + "<tr><td ";
 			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
-			row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
+			row_string = row_string + " style='font-family: Quattrocento, serif; font-weight: bold; width: 300px;'>";
 			row_string = row_string + application.school + "</td></tr>";
 			$('#calendar').fullCalendar("addEventSource", application.events);
 			return row_string;
@@ -46,7 +48,7 @@
 
 		var create_school_list = function(){
 			var table_string = "<table id='school-list'";
-			table_string = table_string + " class='mdl-data-table mdl-js-data-table' style='width: 100%;'>"; 
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
 			table_string = table_string + "<thead style='background-color:#eee;'>";
 			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
 			table_string = table_string + "<tbody style='background-color:#eee;'>";
@@ -75,6 +77,7 @@
 	</head>
 	  
 	<body id="homepage">
+	
       <dialog class="mdl-dialog" id="dialog">
         <div class="mdl-dialog__content">
           <!-- Displayed on Computer and Tablet -->
@@ -179,7 +182,7 @@
 				<tr>
 					<td>
 						  <div id="school-checker"
-							style="width:100%; margin-left:100%; margin-right:auto;">
+							style="width:150%; margin-left:130%; margin-right:auto;">
 							<table id="school-list"></table>
 						  </div>
 					</td>
@@ -247,16 +250,16 @@
 			else if (school == "Yale"){
 				eventColor = "#ffff33";
 			}
-			else if (school == "UCBerkeley"){
+			else if (school == "UC Berkeley"){
 				eventColor = "#80ff80";
 			}
 			else if (school == "Cornell"){
 				eventColor = "#999999";
 			}
-			else if (school == "NotreDame"){
+			else if (school == "Notre Dame"){
 				eventColor = "#ff9f80";
 			}
-			else if (school == "BC"){
+			else if (school == "Boston College"){
 				eventColor = "#cce0ff";
 			}
 			else if (school == "Duke"){
@@ -278,7 +281,7 @@
 				eventColor = "#00ffff";
 			}
 			
-			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor}]});
+			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor, time : time, description : description, school : school}]});
 			dialog.close();
 			for (i = 0; i < sessionStorage.length; i++){
 				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
