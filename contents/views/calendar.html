@@ -24,6 +24,32 @@
 	  <script src='../fullcalendar/lib/jquery.min.js'></script>
 	  <script src='../fullcalendar/lib/moment.min.js'></script>
 	  <script src='../fullcalendar/fullcalendar.js'></script>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $('#calendar').fullCalendar({
+			eventClick: function(calEvent, jsEvent, view) {
+			  if(calEvent.time != null){
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time);
+				}
+			  }
+			  else{
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59" + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59");
+				}
+			  }
+			},
+			aspectRatio: 1.8,
+			eventTextColor: 'black',
+		});
+      });
+      </script>
 	  <script type="text/javascript">
 	  $(document).ready(function() {
 		var create_new_school_row = function(application){
@@ -204,7 +230,6 @@
 
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
                 for="demo-menu-lower-right">
-              <li id="userInfo" class="mdl-menu__item">User Informaton</li>
               <li id="logout" class="mdl-menu__item">Log Out</li>
             </ul>
           </div>
@@ -221,7 +246,7 @@
 					<td>
 						  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
 							  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
-								style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif;"> + Add Reminder
+								style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif; background-color:rgb(96,125,139);"> + Add Reminder
 							  </button>
 							  <div id="calendar"></div>
 						  </div>
