@@ -24,16 +24,6 @@
 	  <script src='../fullcalendar/lib/jquery.min.js'></script>
 	  <script src='../fullcalendar/lib/moment.min.js'></script>
 	  <script src='../fullcalendar/fullcalendar.js'></script>
-      <script type="text/javascript">
-      $(document).ready(function() {
-        $('#calendar').fullCalendar({
-			eventClick: function(calEvent, jsEvent, view) {
-				alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time + "\n" + 'Description: ' + calEvent.description);},
-			aspectRatio: 1.8,
-			eventTextColor: 'black',
-		});
-      });
-      </script>
 	  <script type="text/javascript">
 	  $(document).ready(function() {
 		var create_new_school_row = function(application){
@@ -123,6 +113,48 @@
         <div class="mdl-dialog__actions">
           <button id="add_button" type="button" class="mdl-button">Add</button>
           <button id="cancel_button" type="button" class="mdl-button">Cancel</button>
+        </div>
+      </dialog>
+
+      <dialog class="mdl-dialog" id="reminder_dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <div class="mdh-expandable-search2 mdl-cell--hide-phone">
+            <form action="#" id="reminder_name_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Name of Reminder:</p>
+                <p id="confirmed_reminder_name" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="date_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Date:</p>
+                <p id="confirmed_date" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="time_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Time:</p>
+                <p id="confirmed_time" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <form action="#" id="school_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">School:</p>
+                <p id="confirmed_school" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+            <!-- Floating Multiline Textfield -->
+            <form action="#" id="description_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Description:</p>
+                <p id="confirmed_description" style="margin: 0px; font-size: 18px"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button id="close_button" type="button" class="mdl-button">Close</button>
         </div>
       </dialog>
 
@@ -292,6 +324,21 @@
           }
         });
 			</script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('#calendar').fullCalendar({
+            eventClick: function(calEvent, jsEvent, view) {
+              var dialog = document.getElementById("reminder_dialog")
+              dialog.showModal();
+              document.getElementById("close_button").addEventListener('click', function() {
+                dialog.close();
+              });
+            },
+            aspectRatio: 1.8,
+            eventTextColor: 'black',
+          });
+        });
+      </script>
         </main>
       </div>
   </body>
