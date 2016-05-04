@@ -2,9 +2,8 @@
 // has finished loading in the browser.
 
 $(function() {
-
+	console.log(sessionStorage);
 	var apps_dict = {};
-
 	var on_homepage; 
 	var on_school_page;
 	var on_login;
@@ -43,6 +42,13 @@ $(function() {
 		window.location.replace("./login.html");
 	});
 
+	$("#notificationsButton").click(function(event) {
+		if(event.currentTarget.childNodes[1].getAttribute("data-badge")!=null) {
+			event.currentTarget.childNodes[1].removeAttribute("data-badge")
+			event.currentTarget.childNodes[1].removeAttribute("style")
+		}
+	});
+
     var college_to_shorthand ={ 
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
@@ -61,22 +67,63 @@ $(function() {
 	    "Boston College" : "BC",
 	};
 
+	mitTasks = {};
+	mitTasks["Essay 1"] = false;
+	mitTasks["Essay 2"] = false;
+	mitTasks["Recommendation 1"] = false;
+	mitTasks["Recommendation 2"] = false;
+	mitTasks["Send GRE Scores"] = false;
+
+	stanfordTasks = {};
+	stanfordTasks["Essay 1"] = false;
+	stanfordTasks["Essay 2"] = false;
+	stanfordTasks["Essay 3"] = false;
+	stanfordTasks["Recommendation 1"] = false;
+	stanfordTasks["Interview"] = false;
+	stanfordTasks["Take MCAT Exam"] = false;
+
+	harvardTasks = {};
+	harvardTasks["Essay 1"] = false;
+	harvardTasks["Essay 2"] = false;
+	harvardTasks["Bribe Admissons Officer"] = false;
+	harvardTasks["Recommendation 1"] = false;
+	harvardTasks["Recommendation 2"] = false;
+	harvardTasks["Eye Exam"] = false;
+	harvardTasks["Phone Interview"] = false;
+
+	columbiaTasks = {};
+	columbiaTasks["Essay 1"] = false;
+	columbiaTasks["Essay 2"] = false;
+	columbiaTasks["Recommendation 1"] = false;
+	columbiaTasks["Recommendation 2"] = false;
+	columbiaTasks["Recommendation 3"] = false;
+	columbiaTasks["Interview 1"] = false;
+	columbiaTasks["Interview 2"] = false;
+
+	yaleTasks = {};
+	yaleTasks["Essay 1"] = false;
+	yaleTasks["Recommendation 1"] = false;
+	yaleTasks["Recommendation 2"] = false;
+	yaleTasks["Submit Acting Reel"] = false;
+	yaleTasks["Interview"] = false;
+	yaleTasks["Take MCAT Exam"] = false;
+
 	//Hard code in schools for prototype
-	apps_dict["MIT"] = new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/", "../images/MITpic.jpg");
-	apps_dict["Stanford"] = new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/", "../images/Stanfordpic.jpg");
-	apps_dict["Harvard"] = new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php", "../images/Harvardpic.jpg");
-	apps_dict["Columbia"] = new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/", "../images/Columbiapic.jpg");
-	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edu", "http://gsas.yale.edu/", "../images/Yalepic.jpg");
-	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg");
-	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg");
-	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg");
-	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg");
-	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg");
-	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg");
-	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg");
-	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg");
-	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg");
-	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg");
+	apps_dict["MIT"] = new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/", "../images/MITpic.jpg", mitTasks);
+	apps_dict["Stanford"] = new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/", "../images/Stanfordpic.jpg", stanfordTasks);
+	apps_dict["Harvard"] = new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php", "../images/Harvardpic.jpg", harvardTasks);
+	apps_dict["Columbia"] = new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/", "../images/Columbiapic.jpg", columbiaTasks);
+	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edu", "http://gsas.yale.edu/", "../images/Yalepic.jpg", yaleTasks);
+	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg", mitTasks);
+	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg", stanfordTasks);
+	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg", harvardTasks);
+	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg", columbiaTasks);
+	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg", yaleTasks);
+	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg", mitTasks);
+	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg", stanfordTasks);
+	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg", harvardTasks);
+	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg", columbiaTasks);
+	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg", yaleTasks);
 	//////////////////////
 	// Search Applications 
 
@@ -84,7 +131,7 @@ $(function() {
 	var find_application_by_school = function(school_name){
 		for (i = 0; i < sessionStorage.length; i++) {
 			var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-			if (application.school =  school_name){
+			if (application.school ==  school_name){
 				return application;
 			}
 		}
@@ -98,7 +145,6 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		console.log("HI!");
 		$('#buttons').replaceWith('<div id="buttons"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Recruiter X: (555) 555-5555</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Recruiter X: email@email.com</a></li></ul></div>')
 	}
 
@@ -128,7 +174,6 @@ $(function() {
 		var i = 0;
 		var finished_tasks = 0;
 		for (var key in application.tasks) {
-			console.log(application.tasks[key]);
 			if (application.tasks[key] == true){
 				done_tasks = done_tasks + '<tr><td id="task-name-done" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
 				i = i + 1; 
@@ -146,11 +191,8 @@ $(function() {
 			// $('#done-list').hide();
 		}
 		else {
-			console.log("hello");
 			// $('#done-list').show();
 			$('#done-list').replaceWith('<table id="done-list" class="mdl-data-table mdl-js-data-table"><tbody>' + done_tasks + '</tbody></table>');
-			console.log(done_tasks);
-			console.log($('#done-list'));
 		}
 		change_to_resources();
 		componentHandler.upgradeAllRegistered();
@@ -242,7 +284,6 @@ $(function() {
 		row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric'";
 		row_string = row_string + " style='height:80px; font-family: 'Quattrocento', serif; font-weight: bold;'>";
 		row_string = row_string + application.school + "</td></tr>";
-		console.log(row_string);
 		return row_string;
 	}
 
@@ -257,7 +298,6 @@ $(function() {
 			table_string = table_string + create_new_school_row(application);
 		}
 		table_string = table_string + "</tbody></table>";
-		console.log(table_string);
 		return table_string;
 	}
 	
@@ -299,18 +339,15 @@ $(function() {
 
 	if (on_school_page == true){
 	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
-	    console.log("HELLLLOOO");
-	    console.table(checkboxes);
-	    console.log("GOODBYE");
 	  	for (var i = 0; i < checkboxes.length; i++) {
 	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
     		var div_task = checkboxes[i];
-	    	checkboxes[i].addEventListener('change', function(){
-	    		console.log("clicked!");
+	    	checkboxes[i].addEventListener('change', function(event){
 	    		var curr_app = find_application_by_school(current_school);
-	    		curr_app.tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
+	    		curr_app.tasks[event.target.parentNode.parentNode.parentNode.childNodes[1].textContent] = true;
 	    		apps_dict[current_school] = curr_app;
 	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
+	    		location.reload();
 	    	});
 	  	}
   	}
@@ -337,7 +374,9 @@ $(function() {
 	    // check if it is in the array of colleges
 	    if (jQuery.inArray(text_input, colleges) !== -1) {
 	    	app_string = college_to_shorthand[text_input]
+	    	console.log(JSON.stringify(apps_dict[app_string]));
 	    	sessionStorage.setItem(app_string, JSON.stringify(apps_dict[app_string]));
+	    	console.table(sessionStorage);
 	        $('#search_field')[0].reset(); //clear text
 	        dialog.close();
 	        $('#homepage-table').replaceWith(create_homepage_table());
@@ -378,12 +417,12 @@ $(function() {
 
     var add_progress_bars = function(){
 	    for (i = 0; i < sessionStorage.length; i ++ ){
-	    	console.log("sessionStorage HAS LENGTH LONGER THAN ONE");
+	    	// console.log("sessionStorage HAS LENGTH LONGER THAN ONE");
 	    	var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
 	    	var name = application.school.toLowerCase() + "Progress";
-	    	console.log(application);
+	    	// console.log(application);
 			componentHandler.upgradeAllRegistered();
-			console.log(application.percent_complete);
+			// console.log(application.percent_complete);
 			var num_completed = 0; 
 			var num_total = 0; 
 			for (var key in application.tasks) {
