@@ -33,13 +33,7 @@ $(function() {
 	            var showToastButton = document.querySelector('#loginButton');
 				var data = {
 					message: 'Invalid Username/Password',
-					actionHandler: handler,
-					actionText: "Hide"
 				};
-				var handler = function(event) {
-					data.timeout = 0;
-					snackbarContainer.MaterialSnackbar.showSnackbar(data);
-				}
 	          	snackbarContainer.MaterialSnackbar.showSnackbar(data);
 			}
 		});
@@ -297,6 +291,12 @@ $(function() {
 	        dialog.close();
 	        $('#homepage-table').replaceWith(create_homepage_table());
 	        add_progress_bars();
+	        window['counter'] = 0;
+			var snackbarContainer = document.querySelector('#applicationAddedNotice');
+			var data = {
+				message: app_string +' Application Added!',
+			};
+          	snackbarContainer.MaterialSnackbar.showSnackbar(data);
 	    }
     });
 
