@@ -39,6 +39,10 @@ var Application = function(school, due_date, recruiter, link, image_souce, tasks
 	this.addDocument = function(file){
 		this.documents.push(file);
 	}
+	
+	this.addEvent = function(event){
+		this.events.push(event);
+	}
 
 	var completed = 0;
 
