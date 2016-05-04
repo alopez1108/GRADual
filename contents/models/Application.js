@@ -2,21 +2,21 @@
  * Application represents an application started by the user. 
  */
  
-var Application = function(school, due_date, recruiter, link, image_souce, number, events) {
+var Application = function(school, due_date, recruiter, link, image_souce, tasks, number, events) {
     ////////////////////////////////////////////////
     // Representation
     //
     this.school = school;
     this.recruiter = recruiter; 
     this.documents = new Array();
-    this.tasks = {};
+    this.tasks = tasks;
     this.due_date = due_date; 
     this.application_link = link;
     this.image = image_souce;
     this.num_tasks = 0;
 	this.number = number;
 	this.events = events;
-
+	
     // status can either be "open", "applied", "pending", "accepted", "waitlisted", or "rejected"
     this.status = "Open";
 
@@ -39,17 +39,6 @@ var Application = function(school, due_date, recruiter, link, image_souce, numbe
 	this.addDocument = function(file){
 		this.documents.push(file);
 	}
-
-
-	////////////////////////////////////////////////
-	// Auto populating tasks into school 
-	//
-
-	this.addTask("Essay 1");
-	this.addTask("Essay 2");
-	this.addTask("Recommendation 1");
-	this.addTask("Recommendation 2");
-	this.addTask("Send GRE scores");
 
 	var completed = 0;
 
