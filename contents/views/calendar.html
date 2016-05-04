@@ -24,6 +24,73 @@
 	  <script src='../fullcalendar/lib/jquery.min.js'></script>
 	  <script src='../fullcalendar/lib/moment.min.js'></script>
 	  <script src='../fullcalendar/fullcalendar.js'></script>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $('#calendar').fullCalendar({
+			eventClick: function(calEvent, jsEvent, view) {
+			  if(calEvent.time != null){
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + calEvent.time);
+				}
+			  }
+			  else{
+				if(calEvent.description != null){
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59" + "\n" + 'Description: ' + calEvent.description);
+				}
+				else{
+					alert('School: ' + calEvent.school + '\n' + 'Event: ' + calEvent.title + "\n" + 'Time: ' + "23:59");
+				}
+			  }
+			},
+			aspectRatio: 1.8,
+			eventTextColor: 'black',
+		});
+      });
+      </script>
+	  <script type="text/javascript">
+	  $(document).ready(function() {
+		var create_new_school_row = function(application){
+			var row_string = '';
+			row_string = row_string + "<tr><td ";
+			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
+			row_string = row_string + " style='font-family: Quattrocento, serif; font-weight: bold; width: 300px;'>";
+			row_string = row_string + application.school + "</td></tr>";
+			$('#calendar').fullCalendar("addEventSource", application.events);
+			return row_string;
+		}
+
+		var create_school_list = function(){
+			var table_string = "<table id='school-list'";
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
+			table_string = table_string + "<thead style='background-color:#FFFFFF;'>";
+			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
+			table_string = table_string + "<tbody style='background-color:#eee;'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				table_string = table_string + create_new_school_row(application);
+			}
+			table_string = table_string + "</tbody></table>";
+			return table_string;
+		}
+		
+		var create_modal_school_list = function(){
+			var list_string = "<select class='mdl-textfield__input' type='text' id='schoolpicker'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				list_string = list_string + "<option>" + application.school + "</option>";
+			}
+			list_string = list_string + "</select>";
+			return list_string;
+		}
+		
+		$('#schoolpicker').replaceWith(create_modal_school_list());
+		$('#school-list').replaceWith(create_school_list());
+	  });
+	  </script>
+	</head>
 	  
 	  <dialog class="mdl-dialog" id="dialog">
         <div class="mdl-dialog__content">
