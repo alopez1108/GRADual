@@ -3,6 +3,12 @@
 
 $(function() {
 	console.log(sessionStorage);
+
+	var url = window.location.href
+    if(url.charAt(url.length-1)==='#') {
+    	window.location.href = window.location.href.substring(0, url.length-2)
+    }
+
 	var apps_dict = {};
 	var on_homepage; 
 	var on_school_page;
@@ -52,19 +58,19 @@ $(function() {
     var college_to_shorthand ={ 
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
-	    "University of Chicago (Booth)" : "UChicago",
-	    "University of Pennsylvania (Wharton)" : "UPenn",
-	    "Massachusetts Institute of Technology (Sloan)" : "MIT",
+	    "University of Chicago" : "UChicago",
+	    "University of Pennsylvania" : "UPenn",
+	    "Massachusetts Institute of Technology" : "MIT",
 	    "Yale University" : "Yale",
 	    "Columbia University" : "Columbia",
-	    "Cornell University (Johnson)" : "Cornell",
+	    "Cornell University" : "Cornell",
 	    "Duke University" : "Duke",
 	    "University of Notre Dame" : "NotreDame",
 	    "Georgetown University" : "Georgetown",
 	    "University of Virginia" : "UVA",
 	    "University of California - Berkeley" : "UCBerkeley",
-	    "Rice University (Jones)" : "Rice",
-	    "Boston College" : "BC",
+	    "Rice University" : "Rice",
+	    "Boston College" : "bostoncollege",
 	};
 
 	var common_name_to_shorthand ={ 
@@ -115,8 +121,6 @@ $(function() {
 	    "Rice" : "Rice",
 	    "rice" : "Rice",
 	    "bostoncollege" : "Boston College",
-	    "bc" : "Boston College",
-	    "BC" : "Boston College",
 	};
 	
 	MITevents = {events: [{title  : 'Interview', start  : '2016-07-19', editable : true, color : '#ff4d4d', school : "MIT"},
@@ -244,7 +248,7 @@ $(function() {
 	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg", mitTasks, "6", UCBerkeleyevents);
 	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg", stanfordTasks, "7", Cornellevents);
 	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg", harvardTasks, "8", NotreDameevents);
-	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg", columbiaTasks, "9", BCevents);
+	apps_dict["bostoncollege"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg", columbiaTasks, "9", BCevents);
 	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg", yaleTasks, "10", Dukeevents);
 	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg", mitTasks, "11", Georgetownevents);
 	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg", stanfordTasks, "12", Riceevents);
@@ -270,9 +274,12 @@ $(function() {
 	// Set up page
 
 	var current_school; 
-
+	console.log(apps_dict);
 	var change_to_resources = function (){
-		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + '><button id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</button></a><div id="recruiter-info"><div>Recruiter X: (555) 555-5555 </div><div>Recruiter X: email@email.com</div></div></div>')
+		console.log("LOOK AT MEEEE");
+		console.log(common_name_to_shorthand[current_school]);
+		console.log(apps_dict[common_name_to_shorthand[current_school]].application_link);
+		$('#buttons').replaceWith('<div id="buttons"><a href= ' + '"' + apps_dict[common_name_to_shorthand[current_school]].application_link +'"'+ '><button id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</button></a><div id="recruiter-info"><div>Recruiter X: (555) 555-5555 </div><div>Recruiter X: email@email.com</div></div></div>')
 	}
 
 	var change_to_documents = function(){
@@ -295,6 +302,7 @@ $(function() {
 		on_school_page = true;
 		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table><table id="done-list" class="mdl-data-table mdl-js-data-table"></table></div><div id="buttons"></div><div id="documents"></div></div>');
 		$('#school-name').text(current_school);
+		console.log(school);
 		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
 		var done_tasks = '';
@@ -510,23 +518,27 @@ $(function() {
     var colleges = [
 	    "Harvard University",
 	    "Stanford University",
-	    "University of Chicago (Booth)",
-	    "University of Pennsylvania (Wharton)",
-	    "Massachusetts Institute of Technology (Sloan)",
+	    "University of Chicago",
+	    "University of Pennsylvania",
+	    "Massachusetts Institute of Technology",
 	    "Yale University",
 	    "Columbia University",
-	    "Cornell University (Johnson)",
+	    "Cornell University",
 	    "Duke University",
 	    "University of Notre Dame",
 	    "Georgetown University",
 	    "University of Virginia",
 	    "University of California - Berkeley",
-	    "Rice University (Jones)",
+	    "Rice University",
 	    "Boston College",
     ];
 
     $( "#search_applications" ).autocomplete({
-    	source: colleges
+    	source: colleges,
+    // 	select: function (event, ui) {
+		  //   $("#addApp").focus();
+		  //   return false;
+		  // }
     });
 
     $( "#search_applications" ).autocomplete("option", "appendTo", "#dialog");  
