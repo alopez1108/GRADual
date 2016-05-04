@@ -119,80 +119,80 @@ $(function() {
 	    "BC" : "Boston College",
 	};
 	
-	MITevents = {events: [{title  : 'Interview', start  : '2016-07-19', editable : true, color : '#ff4d4d'},
-				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff4d4d'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-17', editable : true, color : '#ff4d4d'},
-				{title  : 'Admissions Results', start  : '2016-07-31', editable : true, color : '#ff4d4d'}]};
+	MITevents = {events: [{title  : 'Interview', start  : '2016-07-19', editable : true, color : '#ff4d4d', school : "MIT"},
+				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff4d4d', school : "MIT"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-17', editable : true, color : '#ff4d4d', school : "MIT"},
+				{title  : 'Admissions Results', start  : '2016-07-31', editable : true, color : '#ff4d4d', school : "MIT"}]};
 
-	Stanfordevents = {events: [{title  : 'Interview', start  : '2016-04-01', editable : true, color : '#6666ff'},
-				{title  : 'Application Due', start  : '2016-03-05', editable : true, color : '#6666ff'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-27', editable : true, color : '#6666ff'},
-				{title  : 'Admissions Results', start  : '2016-07-27', editable : true, color : '#6666ff'}]};
+	Stanfordevents = {events: [{title  : 'Interview', start  : '2016-04-01', editable : true, color : '#6666ff', school : "Stanford"},
+				{title  : 'Application Due', start  : '2016-03-05', editable : true, color : '#6666ff', school : "Stanford"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-27', editable : true, color : '#6666ff', school : "Stanford"},
+				{title  : 'Admissions Results', start  : '2016-07-27', editable : true, color : '#6666ff', school : "Stanford"}]};
     
-    Harvardevents = {events: [{title  : 'Interview', start  : '2016-04-03', editable : true, color : '#ff80ff'},
-				{title  : 'Application Due', start  : '2016-04-23', editable : true, color : '#ff80ff'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-04-12', editable : true, color : '#ff80ff'},
-				{title  : 'Admissions Results', start  : '2016-05-31', editable : true, color : '#ff80ff'}]};
+    Harvardevents = {events: [{title  : 'Interview', start  : '2016-04-03', editable : true, color : '#ff80ff', school : "Harvard"},
+				{title  : 'Application Due', start  : '2016-04-23', editable : true, color : '#ff80ff', school : "Harvard"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-12', editable : true, color : '#ff80ff', school : "Harvard"},
+				{title  : 'Admissions Results', start  : '2016-05-31', editable : true, color : '#ff80ff', school : "Harvard"}]};
 
-	Columbiaevents = {events: [{title  : 'Interview', start  : '2016-05-12', editable : true, color : '#ff8c1a'},
-				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff8c1a'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-04-22', editable : true, color : '#ff8c1a'},
-				{title  : 'Admissions Results', start  : '2016-06-20', editable : true, color : '#ff8c1a'}]};
+	Columbiaevents = {events: [{title  : 'Interview', start  : '2016-05-12', editable : true, color : '#ff8c1a', school : "Columbia"},
+				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff8c1a', school : "Columbia"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-22', editable : true, color : '#ff8c1a', school : "Columbia"},
+				{title  : 'Admissions Results', start  : '2016-06-20', editable : true, color : '#ff8c1a', school : "Columbia"}]};
 
-	Yaleevents = {events: [{title  : 'Interview', start  : '2016-03-01', editable : true, color : '#ffff33'},
-				{title  : 'Application Due', start  : '2016-04-04', editable : true, color : '#ffff33'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-04-04', editable : true, color : '#ffff33'},
-				{title  : 'Admissions Results', start  : '2016-05-08', editable : true, color : '#ffff33'}]};
+	Yaleevents = {events: [{title  : 'Interview', start  : '2016-03-01', editable : true, color : '#ffff33', school : "Yale"},
+				{title  : 'Application Due', start  : '2016-04-04', editable : true, color : '#ffff33', school : "Yale"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-04', editable : true, color : '#ffff33', school : "Yale"},
+				{title  : 'Admissions Results', start  : '2016-05-08', editable : true, color : '#ffff33', school : "Yale"}]};
 
-	UCBerkeleyevents = {events: [{title  : 'Interview', start  : '2016-05-21', editable : true, color : '#80ff80'},
-				{title  : 'Application Due', start  : '2016-05-05', editable : true, color : '#80ff80'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-04-30', editable : true, color : '#80ff80'},
-				{title  : 'Admissions Results', start  : '2016-06-13', editable : true, color : '#80ff80'}]};
+	UCBerkeleyevents = {events: [{title  : 'Interview', start  : '2016-05-21', editable : true, color : '#80ff80', school : "UC Berkeley"},
+				{title  : 'Application Due', start  : '2016-05-05', editable : true, color : '#80ff80', school : "UC Berkeley"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-30', editable : true, color : '#80ff80', school : "UC Berkeley"},
+				{title  : 'Admissions Results', start  : '2016-06-13', editable : true, color : '#80ff80', school : "UC Berkeley"}]};
 				
-	Cornellevents = {events: [{title  : 'Interview', start  : '2016-07-02', editable : true, color : '#999999'},
-				{title  : 'Application Due', start  : '2016-06-16', editable : true, color : '#999999'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-06-13', editable : true, color : '#999999'},
-				{title  : 'Admissions Results', start  : '2016-08-11', editable : true, color : '#999999'}]};
+	Cornellevents = {events: [{title  : 'Interview', start  : '2016-07-02', editable : true, color : '#999999', school : "Cornell"},
+				{title  : 'Application Due', start  : '2016-06-16', editable : true, color : '#999999', school : "Cornell"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-06-13', editable : true, color : '#999999', school : "Cornell"},
+				{title  : 'Admissions Results', start  : '2016-08-11', editable : true, color : '#999999', school : "Cornell"}]};
 				
-	NotreDameevents = {events: [{title  : 'Interview', start  : '2016-05-17', editable : true, color : '#ff9f80'},
-				{title  : 'Application Due', start  : '2016-05-18', editable : true, color : '#ff9f80'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-04-29', editable : true, color : '#ff9f80'},
-				{title  : 'Admissions Results', start  : '2016-06-05', editable : true, color : '#ff9f80'}]};
+	NotreDameevents = {events: [{title  : 'Interview', start  : '2016-05-17', editable : true, color : '#ff9f80', school : "Notre Dame"},
+				{title  : 'Application Due', start  : '2016-05-18', editable : true, color : '#ff9f80', school : "Notre Dame"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-29', editable : true, color : '#ff9f80', school : "Notre Dame"},
+				{title  : 'Admissions Results', start  : '2016-06-05', editable : true, color : '#ff9f80', school : "Notre Dame"}]};
 				
-	BCevents = {events: [{title  : 'Interview', start  : '2016-04-09', editable : true, color : '#cce0ff'},
-				{title  : 'Application Due', start  : '2016-04-20', editable : true, color : '#cce0ff'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-05-01', editable : true, color : '#cce0ff'},
-				{title  : 'Admissions Results', start  : '2016-07-26', editable : true, color : '#cce0ff'}]};
+	BCevents = {events: [{title  : 'Interview', start  : '2016-04-09', editable : true, color : '#cce0ff', school : "Boston College"},
+				{title  : 'Application Due', start  : '2016-04-20', editable : true, color : '#cce0ff', school : "Boston College"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-05-01', editable : true, color : '#cce0ff', school : "Boston College"},
+				{title  : 'Admissions Results', start  : '2016-07-26', editable : true, color : '#cce0ff', school : "Boston College"}]};
 				
-	Dukeevents = {events: [{title  : 'Interview', start  : '2016-02-28', editable : true, color : '#ffb3b3'},
-				{title  : 'Application Due', start  : '2016-03-04', editable : true, color : '#ffb3b3'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-07', editable : true, color : '#ffb3b3'},
-				{title  : 'Admissions Results', start  : '2016-04-15', editable : true, color : '#ffb3b3'}]};
+	Dukeevents = {events: [{title  : 'Interview', start  : '2016-02-28', editable : true, color : '#ffb3b3', school : "Duke"},
+				{title  : 'Application Due', start  : '2016-03-04', editable : true, color : '#ffb3b3', school : "Duke"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-07', editable : true, color : '#ffb3b3', school : "Duke"},
+				{title  : 'Admissions Results', start  : '2016-04-15', editable : true, color : '#ffb3b3', school : "Duke"}]};
 				
-	Georgetownevents = {events: [{title  : 'Interview', start  : '2016-03-16', editable : true, color : '#ffb366'},
-				{title  : 'Application Due', start  : '2016-03-17', editable : true, color : '#ffb366'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-22', editable : true, color : '#ffb366'},
-				{title  : 'Admissions Results', start  : '2016-06-02', editable : true, color : '#ffb366'}]};
+	Georgetownevents = {events: [{title  : 'Interview', start  : '2016-03-16', editable : true, color : '#ffb366', school : "Georgetown"},
+				{title  : 'Application Due', start  : '2016-03-17', editable : true, color : '#ffb366', school : "Georgetown"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-22', editable : true, color : '#ffb366', school : "Georgetown"},
+				{title  : 'Admissions Results', start  : '2016-06-02', editable : true, color : '#ffb366', school : "Georgetown"}]};
 				
-	Riceevents = {events: [{title  : 'Interview', start  : '2016-08-17', editable : true, color : '#ffffb3'},
-				{title  : 'Application Due', start  : '2016-08-22', editable : true, color : '#ffffb3'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-08-04', editable : true, color : '#ffffb3'},
-				{title  : 'Admissions Results', start  : '2016-09-19', editable : true, color : '#ffffb3'}]};
+	Riceevents = {events: [{title  : 'Interview', start  : '2016-08-17', editable : true, color : '#ffffb3', school : "Rice"},
+				{title  : 'Application Due', start  : '2016-08-22', editable : true, color : '#ffffb3', school : "Rice"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-08-04', editable : true, color : '#ffffb3', school : "Rice"},
+				{title  : 'Admissions Results', start  : '2016-09-19', editable : true, color : '#ffffb3', school : "Rice"}]};
 				
-	UChicagoevents = {events: [{title  : 'Interview', start  : '2016-01-12', editable : true, color : '#ccffcc'},
-				{title  : 'Application Due', start  : '2016-03-30', editable : true, color : '#ccffcc'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-16', editable : true, color : '#ccffcc'},
-				{title  : 'Admissions Results', start  : '2016-04-21', editable : true, color : '#ccffcc'}]};
+	UChicagoevents = {events: [{title  : 'Interview', start  : '2016-01-12', editable : true, color : '#ccffcc', school : "UChicago"},
+				{title  : 'Application Due', start  : '2016-03-30', editable : true, color : '#ccffcc', school : "UChicago"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-16', editable : true, color : '#ccffcc', school : "UChicago"},
+				{title  : 'Admissions Results', start  : '2016-04-21', editable : true, color : '#ccffcc', school : "UChicago"}]};
 				
-	UVAevents = {events: [{title  : 'Interview', start  : '2016-02-07', editable : true, color : '#d9d9d9'},
-				{title  : 'Application Due', start  : '2016-02-13', editable : true, color : '#d9d9d9'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-03-01', editable : true, color : '#d9d9d9'},
-				{title  : 'Admissions Results', start  : '2016-06-06', editable : true, color : '#d9d9d9'}]};
+	UVAevents = {events: [{title  : 'Interview', start  : '2016-02-07', editable : true, color : '#d9d9d9', school : "UVA"},
+				{title  : 'Application Due', start  : '2016-02-13', editable : true, color : '#d9d9d9', school : "UVA"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-01', editable : true, color : '#d9d9d9', school : "UVA"},
+				{title  : 'Admissions Results', start  : '2016-06-06', editable : true, color : '#d9d9d9', school : "UVA"}]};
 				
-	Pennevents = {events: [{title  : 'Interview', start  : '2016-07-15', editable : true, color : '#00ffff'},
-				{title  : 'Application Due', start  : '2016-07-17', editable : true, color : '#00ffff'},
-				{title  : 'Letters of Recommendation Due', start  : '2016-07-10', editable : true, color : '#00ffff'},
-				{title  : 'Admissions Results', start  : '2016-08-20', editable : true, color : '#00ffff'}]};
+	Pennevents = {events: [{title  : 'Interview', start  : '2016-07-15', editable : true, color : '#00ffff', school : "UPenn"},
+				{title  : 'Application Due', start  : '2016-07-17', editable : true, color : '#00ffff', school : "UPenn"},
+				{title  : 'Letters of Recommendation Due', start  : '2016-07-10', editable : true, color : '#00ffff', school : "UPenn"},
+				{title  : 'Admissions Results', start  : '2016-08-20', editable : true, color : '#00ffff', school : "UPenn"}]};
 
 	mitTasks = {};
 	mitTasks["Essay 1"] = false;
