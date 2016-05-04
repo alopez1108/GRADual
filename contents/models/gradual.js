@@ -7,7 +7,43 @@ $(function() {
 
 	var on_homepage; 
 	var on_school_page;
+	var on_login;
+	if($("#loginButton").length==1) {
+		on_login = true;
+	} else {
+		on_login = false;
+	}
+	if(on_login) {
+		var ctx = document.getElementById("canvas").getContext("2d");
+		ctx.canvas.height = window.innerHeight;
+		ctx.canvas.width = window.innerWidth;
+		ctx.fillStyle = "#B60611";
+		ctx.fillRect(0, window.innerHeight/6, window.innerWidth, window.innerHeight*2/3);
 
+		$("#loginButton").click(function() {
+			if($("#username").val()=="GhostEmoji" && $("#password").val()=="password") {
+				on_login=false;
+				window.location.href = "./homepage.html";
+			}
+			else {
+				$("#username").val("");
+				$("#password").val("");
+				window['counter'] = 0;
+				var snackbarContainer = document.querySelector('#wrongLoginWarning');
+	            var showToastButton = document.querySelector('#loginButton');
+				var data = {
+					message: 'Invalid Username/Password',
+					actionHandler: handler,
+					actionText: "Hide"
+				};
+				var handler = function(event) {
+					data.timeout = 0;
+					snackbarContainer.MaterialSnackbar.showSnackbar(data);
+				}
+	          	snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			}
+		});
+	}
     var college_to_shorthand ={ 
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
@@ -46,8 +82,6 @@ $(function() {
 	    "Tufts University" : "Tufts",
 	    "University of Wisconsin - Madison" : "Wisconsin",
 	};
-
-	console.log(college_to_shorthand);
 
 	//Hard code in schools for prototype
 	apps_dict["MIT"] = new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/", "../images/MITpic.jpg");
@@ -152,7 +186,6 @@ $(function() {
 
 	$('.mdl-layout__content').on('click', '#resources-link', function(){
 		change_to_resources();
-		console.log("RESOURCES LINK!");
 	});
 
 	$('.mdl-layout__content').on('click', '#phone-numbers', function(){
@@ -163,15 +196,15 @@ $(function() {
 		change_to_emails();
 	});
 
-	document.getElementById("homeButton").addEventListener("click", function() {
-		console.log("Go to Home Page");
-		on_school_page = undefined;
-	});
+	if(!on_login) {
+		document.getElementById("homeButton").addEventListener("click", function() {
+			on_school_page = undefined;
+		});
 
-	document.getElementById("calendarButton").addEventListener("click", function() {
-		console.log("Go to Calendar Page")
-		on_school_page = undefined;
-	});
+		document.getElementById("calendarButton").addEventListener("click", function() {
+			on_school_page = undefined;
+		});
+	}
 
 	var url = window.location.href;
 	if(url.indexOf('?')!=-1) {
@@ -242,13 +275,10 @@ $(function() {
 	  	for (var i = 0; i < checkboxes.length; i++) {
 	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
 	    	checkboxes[i].addEventListener('change', function(){
-	    		console.log("clicked!");
 	    		find_application_by_school(current_school).tasks[checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
-	    		console.log(find_application_by_school(current_school));
 
 	    	});
 	  	}
-	  	console.log(checkboxes);
   	}
 
 
@@ -264,7 +294,6 @@ $(function() {
 
 	dialog.querySelector('.close').addEventListener('click', function() {
 	    $('#search_field')[0].reset(); //clear text
-	    console.log("close");
 	    dialog.close();
     });
 
@@ -343,6 +372,5 @@ $(function() {
 
 
 	add_progress_bars();
-
 
 });

@@ -221,3 +221,57 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 #tasksBar {
   background-color: #607D8B;
 }
+
+#login {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index:0;
+}
+#menu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#loginTitle {
+  position: absolute;
+  font-size: 50pt;
+  color: #B60611;
+  margin-top: 60px;
+  text-align: center;
+  width: 40%;
+  left: 30%;
+  right: 30%;
+}
+
+#wordBox {
+  position: absolute;
+  top: 35%;
+  bottom: 35%;
+  left: 33%;
+  right: 33%;
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  padding: 2%;
+  width: 30%;
+  height: 26%;
+}
+
+#loginButton {
+  position: absolute;
+  right: 10%;
+  bottom: 15%;
+}
+
+.mdl-textfield {
+  width: 100%;
+}
