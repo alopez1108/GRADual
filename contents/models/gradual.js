@@ -272,7 +272,7 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + '><button id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</button></a><div id="recruiter-info"><div>Recruiter X: (555) 555-5555 </div><div>Recruiter X: email@email.com</div></div></div>')
+		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + ' id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</a><div id="recruiter-info"><h6>Recruiter X: (555) 555-5555 </h6><h6>Recruiter X: email@email.com</h6></div></div>')
 	}
 
 	var change_to_documents = function(){
@@ -323,13 +323,7 @@ $(function() {
 		}
 		change_to_resources();
 		componentHandler.upgradeAllRegistered();
-		$('#documents').replaceWith('<div id="documents"><h5 id="documents-label">Documents</h5><form id="docs-form"><div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label class="mdl-textfield__label" for="sample1">Essay title</label></div><div class="mdl-textfield mdl-js-textfield"><textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea><label class="mdl-textfield__label" for="sample5">Write your essay here...</label></div></form><button name="data" id="save-button" type="button" class="mdl-button mdl-js-button mdl-button--raised">Save</button></div>')
-	}
-
-	if (on_school_page == true){
-		document.getElementById('save-button').addEventListener(function(){
-			console.log("fskdjflkjdfad");
-		})
+		$('#documents').replaceWith('<div id="documents"><h5 id="documents-label">Documents</h5><div id="essays-form"><form id="docs-form"><div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label class="mdl-textfield__label" for="sample1">Essay title</label></div><div class="mdl-textfield mdl-js-textfield"><textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea><label class="mdl-textfield__label" for="sample5">Write your essay here...</label></div></form><button name="data" id="save-button" type="button" class="mdl-button mdl-js-button mdl-button--raised">Save</button></div><div id="essays"></div></div>')
 	}
 
 	var replace_side_bar =''; 
@@ -458,6 +452,60 @@ $(function() {
 	    dialog.showModal();
     });
 
+    if (on_school_page == true) {
+
+    	var title_input = false;
+    	var essay_input = false; 
+
+    	document.getElementById('sample1').addEventListener('change', function(){
+			if ($('#sample1').textContent == ''){
+				title_input = false;
+				$("#save-button").prop("disabled", true);
+			}
+			else {
+				title_input = true;
+				if (essay_input){
+					$("#save-button").prop("disabled", false);
+				}
+				else {
+					$("#save-button").prop("disabled", true);
+				}
+			}
+		});
+
+		document.getElementById('sample5').addEventListener('change', function(){
+			if ($('#sample5').textContent == ''){
+				essay_input = false;
+				$("#save-button").prop("disabled", true);
+			}
+			else {
+				essay_input = true;
+				if (title_input) {
+					$("#save-button").prop("disabled", false);
+				}
+				else {
+					$("#save-button").prop("disabled", true);
+				}
+			}
+		});
+
+		$("#save-button").prop("disabled", true);
+
+		document.getElementById('save-button').addEventListener('click', function(){
+			console.log("fskdjflkjdfad");
+			console.log($('#sample1').val());
+			console.log($('#sample5').val());
+			var title = $('#sample1').val();
+			var essay = $('#sample5').val();
+			$(':input','#docs-form')
+			  .not(':button, :submit, :reset, :hidden')
+			  .val('')
+			  .removeAttr('checked')
+			  .removeAttr('selected');
+			$("#save-button").prop("disabled", true);
+			$('#essays').replaceWith('<div id="essays"><a id="essay-title">' + title + '</a></div>')
+		});
+	}
 
 
 	dialog.querySelector('.close').addEventListener('click', function() {
