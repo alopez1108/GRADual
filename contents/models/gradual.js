@@ -434,6 +434,8 @@ $(function() {
 	    		var curr_app = find_application_by_school(current_school);
 	    		curr_app.tasks[event.target.parentNode.parentNode.parentNode.childNodes[1].textContent] = true;
 	    		apps_dict[current_school] = curr_app;
+	    		console.log(current_school);
+	    		console.log(apps_dict[current_school]);
 	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
 	    		location.reload();
 	    	});
@@ -462,8 +464,10 @@ $(function() {
 	    // check if it is in the array of colleges
 	    if (jQuery.inArray(text_input, colleges) !== -1) {
 	    	app_string = college_to_shorthand[text_input]
+	    	console.log(app_string);
+	    	console.log("HEREWEGO");
 	    	console.log(JSON.stringify(apps_dict[app_string]));
-	    	sessionStorage.setItem(app_string, JSON.stringify(apps_dict[app_string]));
+	    	sessionStorage.setItem(shorthand_to_common_name[app_string], JSON.stringify(apps_dict[app_string]));
 	    	console.table(sessionStorage);
 	        $('#search_field')[0].reset(); //clear text
 	        dialog.close();
