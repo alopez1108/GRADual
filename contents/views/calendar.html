@@ -46,7 +46,7 @@
 
 		var create_school_list = function(){
 			var table_string = "<table id='school-list'";
-			table_string = table_string + " class='mdl-data-table mdl-js-data-table'>"; 
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table' style='width: 100%;'>"; 
 			table_string = table_string + "<thead style='background-color:#eee;'>";
 			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
 			table_string = table_string + "<tbody style='background-color:#eee;'>";
@@ -175,16 +175,24 @@
           </div>
         </header>
         <main class="mdl-layout__content">
-			  <div id="school-checker"
-				style="position:absolute; width:25%; margin-left:7%; margin-right:auto; margin-top:10%;">
-				<table id="school-list"></table>
-			  </div>
-			  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
-				  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
-					style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif;"> + Add Reminder
-				  </button>
-				  <div id="calendar"></div>
-			  </div>
+			<table>
+				<tr>
+					<td>
+						  <div id="school-checker"
+							style="width:100%; margin-left:100%; margin-right:auto;">
+							<table id="school-list"></table>
+						  </div>
+					</td>
+					<td>
+						  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
+							  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
+								style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif;"> + Add Reminder
+							  </button>
+							  <div id="calendar"></div>
+						  </div>
+					</td>
+				</tr>
+			</table>
 			  <script>
 
         reminders = []
@@ -271,7 +279,13 @@
 			}
 			
 			$('#calendar').fullCalendar("addEventSource", {events:[{title : name, start : date, color : eventColor}]});
-            dialog.close();
+			dialog.close();
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				if(application.school == school){
+					sessionStorage[i].addEvent({title : name, start : date, color : eventColor});
+				}
+			}
           }
         });
 			</script>
