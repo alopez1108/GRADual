@@ -19,7 +19,6 @@
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
       <script src="../js/material.min.js"></script>
-      <script src="../models/Task.js"></script>
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
 	  <script src='../fullcalendar/lib/jquery.min.js'></script>
@@ -72,11 +71,11 @@
         <div class="mdl-dialog__content">
           <!-- Displayed on Computer and Tablet -->
           <div class="mdh-expandable-search2 mdl-cell--hide-phone">
-            <form action="#" id="event_name_form">
+            <form action="#" id="reminder_name_form">
               <div class="mdl-textfield mdl-js-textfield">
-                <p style="margin: 0px; font-size: 18px">Name of Event:</p>
-                <input class="mdl-textfield__input" type="text" id="event_name"/>
-                <label class="mdl-textfield__label" for="event_name"></label>
+                <p style="margin: 0px; font-size: 18px">Name of Reminder:</p>
+                <input class="mdl-textfield__input" type="text" id="reminder_name"/>
+                <label class="mdl-textfield__label" for="reminder_name"></label>
               </div>
             </form>
             <form action="#" id="date_form">
@@ -96,7 +95,23 @@
             <form action="#" id="school_form">
               <div class="mdl-textfield mdl-js-textfield">
                 <p style="margin: 0px; font-size: 18px">School:</p>
-                <input class="mdl-textfield__input" type="text" id="schoolpicker"/>
+                <select class="mdl-textfield__input" type="text" id="schoolpicker"/>
+                  <option>Harvard University</option>
+                  <option>Stanford University</option>
+                  <option>University of Chicago (Booth)</option>
+                  <option>University of Pennsylvania (Wharton)</option>
+                  <option>Massachusetts Institute of Technology (Sloan)</option>
+                  <option>Yale University</option>
+                  <option>Columbia University</option>
+                  <option>Cornell University (Johnson)</option>
+                  <option>Duke University</option>
+                  <option>University of Notre Dame</option>
+                  <option>Georgetown University</option>
+                  <option>University of Virginia</option>
+                  <option>University of California - Berkeley</option>
+                  <option>Rice University (Jones)</option>
+                  <option>Boston College</option>
+                </select>
                 <label class="mdl-textfield__label" for="schoolpicker"></label>
               </div>
             </form>
@@ -109,16 +124,10 @@
               </div>
             </form>
           </div>
-          <!-- Displayed on mobile -->
-          <!-- <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop"></div> -->
-          <!-- Search button -->
-          <!-- <button class="mdh-toggle-search mdl-button mdl-js-button mdl-button--icon mdl-cell--hide-tablet mdl-cell--hide-desktop">
-            <i class="material-icons">search</i>
-          </button> -->
         </div>
         <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button add">Add</button>
-          <button type="button" class="mdl-button close">Cancel</button>
+          <button id="add_button" type="button" class="mdl-button">Add</button>
+          <button id="cancel_button" type="button" class="mdl-button">Cancel</button>
         </div>
       </dialog>
 
@@ -185,6 +194,10 @@
 				  <div id="calendar"></div>
 			  </div>
 			  <script>
+
+        reminders = []
+
+
 			  $("#add_reminder_button").on("click", function() {
 				var dialog = document.querySelector('dialog');
 				if (! dialog) {
@@ -193,31 +206,32 @@
 				dialog.showModal();
 			  });
 
-			  dialog.querySelector('.close').addEventListener('click', function() {
-				// $('#login')[0].reset(); //clear text
-				dialog.close();
-			  });
-			  dialog.querySelector('.add').addEventListener('click',function() {
-				// add university to homepage
-				var text_input = $('#schoolpicker').val();
-				// check if it is in the array of colleges
-				if (jQuery.inArray(text_input, current_colleges) !== -1) {
-				  console.log("yes");
+			  dialog.querySelector('#cancel_button').addEventListener('click', function() {
+          var name = $('#reminder_name');
+          var date = $('#datepicker');
+          var time = $('#timepicker');
+          var school = $('#schoolpicker');
+          var description = $('#description');
+          name.val('');
+          date.val('');
+          time.val('');
+          school.val('');
+          description.val('');
 				  dialog.close();
-				}
 			  });
-			  var current_colleges = [
-				"Harvard University",
-				"Stanford University",
-				"Massachusetts Institute of Technology (Sloan)",
-				"Yale University",
-				"Columbia University",
-				"University of California - Berkeley",
-			  ];
-			  $( "#schoolpicker" ).autocomplete({
-				source: current_colleges
-			  });
-			  $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
+
+			  dialog.querySelector('#add_button').addEventListener('click',function() {
+          var name = $('#reminder_name').val();
+          var date = $('#datepicker').val();
+          var time = $('#timepicker').val();
+          var school = $('#schoolpicker').val();
+          var description = $('#description').val();
+
+          if (name.length > 0 && date.length > 0 && time.length > 0 && school.length >0 && description.length > 0) {
+            reminders.push([name,date,time,school,description]);
+            dialog.close();
+          }
+        });
 			</script>
         </main>
       </div>
