@@ -98,8 +98,7 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		console.log("HI!");
-		$('#buttons').replaceWith('<div id="buttons"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Recruiter X: (555) 555-5555</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Recruiter X: email@email.com</a></li></ul></div>')
+		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + '><button id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</button></a><div id="recruiter-info"><div>Recruiter X: (555) 555-5555 </div><div>Recruiter X: email@email.com</div></div></div>')
 	}
 
 	var change_to_documents = function(){
@@ -215,7 +214,7 @@ $(function() {
 
 	var create_school_card = function(application){
 		var card_string = '';
-		card_string = card_string + "<td>";
+		card_string = card_string + "<div class='application_card'>";
 		card_string = card_string + "<a href='./headWithSideBar.html?=" + application.school +  "''>";
 		card_string = card_string + "<div class='demo-card-square mdl-card mdl-shadow--2dp'>";
 		card_string = card_string + "<div class='mdl-card__title mdl-card--expand'>";
@@ -223,17 +222,17 @@ $(function() {
 		card_string = card_string + "<h2 class='mdl-card__title-text'>" + application.school + "</h2></div>";
 		card_string = card_string + "<div class='mdl-card__actions mdl-card--border'>";
 		card_string = card_string + "<div id=" + application.school.toLowerCase() + "Progress" + " class='mdl-progress mdl-js-progress'></div></div>";
-		card_string = card_string + "</div></a></td>";
+		card_string = card_string + "</div></a></div>";
 		return card_string;
 	}
 
 	var create_add_new_card = function(){
 		card_string = '';
-		card_string = card_string + "<td><div id='newCard' class='demo-card-square mdl-card mdl-shadow--2dp'>";
+		card_string = card_string + "<div class='application_card'><div id='newCard' class='demo-card-square mdl-card mdl-shadow--2dp'>";
 		card_string = card_string + "<div class='mdl-card__title mdl-card--expand'><i id='addAppIcon' style='color:#B60611' class='material-icons'>add</i>";
 		card_string = card_string + "<h2 id='newText' class='mdl-card__title-text' style='align:center'>Add New Application</h2>";
-		card_string = card_string + "</div></td>";
-		return card_string;
+		card_string = card_string + "</div></div>";
+		return card_string;	
 	}
 	
 	var create_new_school_row = function(application){
@@ -262,35 +261,17 @@ $(function() {
 	}
 	
 	var create_homepage_table = function(){
-		var table_string = "<table id='homepage-table'>";
+		var table_string = "<div id='homepage-table'>";
 		for (i = 0; i < sessionStorage.length + 1; i++){
 			var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-			if (i % 4 === 0){
-				if (i === sessionStorage.length){
-					table_string = table_string + "<tr>" + create_add_new_card();
-				}
-				else {
-					table_string = table_string + "<tr>" + create_school_card(application);
-				}
-			}
-			else if (i % 4 === 3){
-				if (i === sessionStorage.length){
-					table_string = table_string + create_add_new_card() + "</tr>";
-				}
-				else {
-					table_string = table_string + create_school_card(application) + "</tr>";
-				}
+			if (i === sessionStorage.length){
+				table_string = table_string + create_add_new_card();
 			}
 			else {
-				if (i === sessionStorage.length){
-					table_string = table_string + create_add_new_card();
-				}
-				else {
-					table_string = table_string + create_school_card(application);
-				}
+				table_string = table_string + create_school_card(application);
 			}
 		}
-		table_string = table_string + "</table>";
+		table_string = table_string + "</div>";
 		return table_string;
 	}
 
