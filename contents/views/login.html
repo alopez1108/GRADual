@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+   
+
+  -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GRADual</title>
+    <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="../css/material.min.css" rel="stylesheet">
+    <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body id="login">
+    <!-- Dependencies -->
+      <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+      <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+      <script src="../js/material.min.js"></script>
+      <script src="../models/Application.js"></script>
+      <script src="../models/gradual.js"></script>
+      <script src="../js/homepage.js"></script>
+      <canvas id="canvas"></canvas>
+      <div id="menu">
+        <span id="loginTitle">GRADual</span>
+        <div id="wordBox"> 
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="username"/>
+            <label class="mdl-textfield__label" for="username">Username</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="password" id="password"/>
+            <label class="mdl-textfield__label" for="password">Password</label>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="loginButton">
+            Login
+          </button>
+        </div>
+      </div>
+      <div id="wrongLoginWarning" class="mdl-js-snackbar mdl-snackbar">
+        <div id="warning" class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+      </div>
+  </body>
+</html>
