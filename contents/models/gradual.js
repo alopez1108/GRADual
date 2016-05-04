@@ -98,8 +98,7 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		console.log("HI!");
-		$('#buttons').replaceWith('<div id="buttons"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Recruiter X: (555) 555-5555</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Recruiter X: email@email.com</a></li></ul></div>')
+		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + '><button id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</button></a><div id="recruiter-info"><div>Recruiter X: (555) 555-5555 </div><div>Recruiter X: email@email.com</div></div></div>')
 	}
 
 	var change_to_documents = function(){
@@ -240,7 +239,7 @@ $(function() {
 		var row_string = '';
 		row_string = row_string + "<tr><td ";
 		row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric'";
-		row_string = row_string + " style='height:80px; font-family: 'Quattrocento', serif; font-weight: bold;'>";
+		row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
 		row_string = row_string + application.school + "</td></tr>";
 		console.log(row_string);
 		return row_string;
@@ -248,10 +247,10 @@ $(function() {
 
 	var create_school_list = function(){
 		var table_string = "<table id='school-list'";
-		table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"
-		table_string = table_string + "<thead style='background-color:#eee;'>"
-		table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style='height:80px; text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>"
-		table_string = table_string + "<tbody style='background-color:#eee;'>"
+		table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"; 
+		table_string = table_string + "<thead style='background-color:#eee;'>";
+		table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
+		table_string = table_string + "<tbody style='background-color:#eee;'>";
 		for (i = 0; i < sessionStorage.length; i++){
 			var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
 			table_string = table_string + create_new_school_row(application);
