@@ -222,7 +222,32 @@ $(function() {
 		card_string = card_string + "</div></td>";
 		return card_string;
 	}
+	
+	var create_new_school_row = function(application){
+		var row_string = '';
+		row_string = row_string + "<tr><td ";
+		row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric'";
+		row_string = row_string + " style='height:80px; font-family: 'Quattrocento', serif; font-weight: bold;'>";
+		row_string = row_string + application.school + "</td></tr>";
+		console.log(row_string);
+		return row_string;
+	}
 
+	var create_school_list = function(){
+		var table_string = "<table id='school-list'";
+		table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"
+		table_string = table_string + "<thead style='background-color:#eee;'>"
+		table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style='height:80px; text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>"
+		table_string = table_string + "<tbody style='background-color:#eee;'>"
+		for (i = 0; i < sessionStorage.length; i++){
+			var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+			table_string = table_string + create_new_school_row(application);
+		}
+		table_string = table_string + "</tbody></table>";
+		console.log(table_string);
+		return table_string;
+	}
+	
 	var create_homepage_table = function(){
 		var table_string = "<table id='homepage-table'>";
 		for (i = 0; i < sessionStorage.length + 1; i++){
@@ -257,6 +282,7 @@ $(function() {
 	}
 
 	$('#homepage-table').replaceWith(create_homepage_table());
+	$('#school-list').replaceWith(create_school_list());
 
 	if (on_school_page == true){
 	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
