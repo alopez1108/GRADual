@@ -98,9 +98,8 @@ $(function() {
 	var current_school; 
 
 	var change_to_resources = function (){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   Resources </div>');
-		var application = find_application_by_school(current_school);
-		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Important Phone Numbers</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Important Emails</a></li></ul></div>')
+		console.log("HI!");
+		$('#buttons').replaceWith('<div id="buttons"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a href= ' + application.application_link + ' class="mdl-list__item-primary-content">Link to Application Portal</a></li><li class="mdl-list__item"><a id="phone-numbers" class="mdl-list__item-primary-content">Recruiter X: (555) 555-5555</a></li><li class="mdl-list__item"><a id="emails" class="mdl-list__item-primary-content">Recruiter X: email@email.com</a></li></ul></div>')
 	}
 
 	var change_to_documents = function(){
@@ -121,15 +120,19 @@ $(function() {
 	var change_to_school_page = function(school){
 		current_school = school;
 		on_school_page = true;
-		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"></div></div>');
+		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table><table id="done-list" class="mdl-data-table mdl-js-data-table"></table></div><div id="buttons"></div></div><div id="documents">HI BITCHES</div></div>');
 		$('#school-name').text(current_school);
 		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
+		var done_tasks = '';
 		var i = 0;
+		var finished_tasks = 0;
 		for (var key in application.tasks) {
-			if (application.tasks[key]){
-				replace_tasks = replace_tasks + '<tr class="is-selected"><td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="row[' + i + ']"><input type="checkbox" id="row[' + i + ']" class="mdl-checkbox__input" /></label?</td><td id="task-name" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
+			console.log(application.tasks[key]);
+			if (application.tasks[key] == true){
+				done_tasks = done_tasks + '<tr><td id="task-name-done" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
 				i = i + 1; 
+				finished_tasks = finished_tasks += 1; 
 			}
 			else {
 				replace_tasks = replace_tasks + '<tr><td><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="row[' + i + ']"><input type="checkbox" id="row[' + i + ']" class="mdl-checkbox__input" /></label?</td><td id="task-name" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
@@ -138,6 +141,18 @@ $(function() {
 		}
 		$('#task-list').replaceWith('<table id="task-list" class="mdl-data-table mdl-shadow--2dp"><tbody>' + replace_tasks + '</tbody></table>'
 		);
+		if (finished_tasks == 0){
+			//make table invisible
+			// $('#done-list').hide();
+		}
+		else {
+			console.log("hello");
+			// $('#done-list').show();
+			$('#done-list').replaceWith('<table id="done-list" class="mdl-data-table mdl-js-data-table"><tbody>' + done_tasks + '</tbody></table>');
+			console.log(done_tasks);
+			console.log($('#done-list'));
+		}
+		change_to_resources();
 		componentHandler.upgradeAllRegistered();
 	}
 
@@ -199,7 +214,6 @@ $(function() {
 	}
 
 	var create_school_card = function(application){
-		console.log(application);
 		var card_string = '';
 		card_string = card_string + "<td>";
 		card_string = card_string + "<a href='./headWithSideBar.html?=" + application.school +  "''>";
@@ -210,7 +224,6 @@ $(function() {
 		card_string = card_string + "<div class='mdl-card__actions mdl-card--border'>";
 		card_string = card_string + "<div id=" + application.school.toLowerCase() + "Progress" + " class='mdl-progress mdl-js-progress'></div></div>";
 		card_string = card_string + "</div></a></td>";
-		console.log(card_string);
 		return card_string;
 	}
 
@@ -291,18 +304,13 @@ $(function() {
 	    console.log("GOODBYE");
 	  	for (var i = 0; i < checkboxes.length; i++) {
 	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
-	  		console.log(task_name);
-    		console.log(checkboxes[i]);
     		var div_task = checkboxes[i];
 	    	checkboxes[i].addEventListener('change', function(){
 	    		console.log("clicked!");
-	    		// find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
-	    		// console.log(find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent]);
-	    		for (i = 0; i < find_application_by_school(current_school).tasks.length; i ++) {
-	    			console.log(find_application_by_school(current_school).tasks[i]);
-	    			find_application_by_school(current_school).tasks[i] = true;
-	    		}
-	    		console.log(find_application_by_school(current_school).tasks);
+	    		var curr_app = find_application_by_school(current_school);
+	    		curr_app.tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
+	    		apps_dict[current_school] = curr_app;
+	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
 	    	});
 	  	}
   	}
@@ -375,7 +383,16 @@ $(function() {
 	    	var name = application.school.toLowerCase() + "Progress";
 	    	console.log(application);
 			componentHandler.upgradeAllRegistered();
-			document.querySelector("#" + name).MaterialProgress.setProgress(application.percent_complete);
+			console.log(application.percent_complete);
+			var num_completed = 0; 
+			var num_total = 0; 
+			for (var key in application.tasks) {
+				if (application.tasks[key] == true) {
+					num_completed += 1; 
+				}
+				num_total += 1; 
+			}
+			document.querySelector("#" + name).MaterialProgress.setProgress((num_completed/num_total) * 100);
 	    }
     }
 
