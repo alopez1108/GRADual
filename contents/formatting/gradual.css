@@ -39,8 +39,7 @@ body{
 }
 
 .demo-card-square {
-  margin-left: 40px;
-  margin-top: 40px;
+  margin: 20px;
   position: relative;
 }
 
@@ -252,7 +251,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   right: 30%;
 }
 
-#wordBox {
+#wordBox {  
   position: absolute;
   top: 35%;
   bottom: 35%;
@@ -273,6 +272,14 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 
 .mdl-textfield {
   width: 100%;
+}
+
+.application_card {
+  display: inline-block;
+}
+
+#homepage-table {
+  text-align: -webkit-center;
 }
 
 #task-name-done{
