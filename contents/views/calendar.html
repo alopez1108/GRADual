@@ -161,12 +161,16 @@
             <script>
               document.getElementById("notificationsButton").addEventListener("click", function() {console.log("Show Notifications")});
             </script>
-            <button id="userButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-              <i style="color:white" class="material-icons">account_box</i>
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons">account_box</i>
             </button>
-            <script>
-              document.getElementById("userButton").addEventListener("click", function() {console.log("Go to User Info Page")});
-            </script>
+
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+              <li id="userInfo" class="mdl-menu__item">User Informaton</li>
+              <li id="logout" class="mdl-menu__item">Log Out</li>
+            </ul>
           </div>
         </header>
         <main class="mdl-layout__content">

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+   
+
+  -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GRADual</title>
+    <link href="../jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="../css/material.min.css" rel="stylesheet">
+    <link href="../formatting/gradual.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="../css/addReminder.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+      <!-- Dependencies -->
+      <script src="../jquery/js/jquery-1.12.0.min.js"></script>
+      <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+      <script src="../js/material.min.js"></script>
+      <script src="../models/Task.js"></script>
+      <script src="../models/Application.js"></script>
+      <script src="../models/gradual.js"></script>
+      <script src="../js/addReminder.js"></script>
+
+
+      <button type="button" class="mdl-button show-modal">Add Reminder</button>
+      <dialog class="mdl-dialog" id="dialog">
+        <div class="mdl-dialog__content">
+          <!-- Displayed on Computer and Tablet -->
+          <div class="mdh-expandable-search mdl-cell--hide-phone">
+            <form action="#" id="event_name_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Name of Event:</p>
+                <input class="mdl-textfield__input" type="text" id="event_name"/>
+                <label class="mdl-textfield__label" for="event_name"></label>
+              </div>
+            </form>
+            <form action="#" id="date_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Date:</p>
+                <input class="mdl-textfield__input" type="date" id="datepicker"/>
+                <label class="mdl-textfield__label" for="datepicker"></label>
+              </div>
+            </form>
+            <form action="#" id="time_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Time:</p>
+                <input class="mdl-textfield__input" type="time" id="timepicker"/>
+                <label class="mdl-textfield__label" for="timepicker"></label>
+              </div>
+            </form>
+            <form action="#" id="school_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">School:</p>
+                <input class="mdl-textfield__input" type="text" id="schoolpicker"/>
+                <label class="mdl-textfield__label" for="schoolpicker"></label>
+              </div>
+            </form>
+            <!-- Floating Multiline Textfield -->
+            <form action="#" id="description_form">
+              <div class="mdl-textfield mdl-js-textfield">
+                <p style="margin: 0px; font-size: 18px">Description:</p>
+                <textarea class="mdl-textfield__input" type="text" rows= "2" id="description"></textarea>
+                <label class="mdl-textfield__label" for="description"></label>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button add">Add</button>
+          <button type="button" class="mdl-button close">Cancel</button>
+        </div>
+      </dialog>
+  </body>
+</html>
+
+

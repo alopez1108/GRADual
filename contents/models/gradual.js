@@ -38,6 +38,11 @@ $(function() {
 			}
 		});
 	}
+
+	$("#logout").click(function() {
+		window.location.replace("./login.html");
+	});
+
     var college_to_shorthand ={ 
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
@@ -116,7 +121,7 @@ $(function() {
 	var change_to_school_page = function(school){
 		current_school = school;
 		on_school_page = true;
-		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">+ Add Task</button><div id="buttons-container"><button id="resources-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Resources</button><button id="documents-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Documents</button><div></div></div>');
+		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table></div><div id="buttons"></div></div>');
 		$('#school-name').text(current_school);
 		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
@@ -255,11 +260,23 @@ $(function() {
 
 	if (on_school_page == true){
 	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
+	    console.log("HELLLLOOO");
+	    console.table(checkboxes);
+	    console.log("GOODBYE");
 	  	for (var i = 0; i < checkboxes.length; i++) {
 	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
+	  		console.log(task_name);
+    		console.log(checkboxes[i]);
+    		var div_task = checkboxes[i];
 	    	checkboxes[i].addEventListener('change', function(){
-	    		find_application_by_school(current_school).tasks[checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
-
+	    		console.log("clicked!");
+	    		// find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent] = true;
+	    		// console.log(find_application_by_school(current_school).tasks[div_task.parentNode.parentNode.parentNode.querySelector('#task-name').textContent]);
+	    		for (i = 0; i < find_application_by_school(current_school).tasks.length; i ++) {
+	    			console.log(find_application_by_school(current_school).tasks[i]);
+	    			find_application_by_school(current_school).tasks[i] = true;
+	    		}
+	    		console.log(find_application_by_school(current_school).tasks);
 	    	});
 	  	}
   	}
