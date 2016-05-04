@@ -43,6 +43,11 @@ body{
   position: relative;
 }
 
+.mdl-progress {
+  top: 2px;
+  height: 10px;
+}
+
 .background {
 	position: absolute;
 	left: 0;
@@ -66,6 +71,15 @@ body{
 	position: absolute;
 	left: 35px;
 	font-size: 150%;
+}
+
+#newCard {
+  position: relative;
+  top: 26px;
+}
+
+#side-drawers {
+  cursor: pointer;
 }
 
 .page-content{
@@ -122,6 +136,7 @@ body{
 .mdl-layout-title {
   font-family: 'Quattrocento', serif;
   font-weight: bold;
+  cursor: default;
 }
 
 
@@ -171,6 +186,10 @@ a{
   font-family: 'Quattrocento', serif;
 }
 
+#search_applications {
+  width: 100%;
+}
+
 .mdl-textfield__label {
   border-bottom-width: 2px; 
   font-family: 'Quattrocento', serif;
@@ -213,7 +232,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 }
 
 #dialog {
-  width: -webkit-fit-content;
+  width: 25%;
 }
 
 #tasksBar {
@@ -273,7 +292,9 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 .mdl-textfield {
   width: 100%;
 }
-
+#search_field {
+  width: 100%;
+}
 .application_card {
   display: inline-block;
 }
