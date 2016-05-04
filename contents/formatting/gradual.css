@@ -73,22 +73,27 @@ body{
 }
 
 #tasks {
-  width: 70%;
+  width: 60%;
   display: inline-block;
-  position: absolute;
 }
 
 #buttons {
-  left: 70%;
-  width: 30%;
+  left: 60%;
+  width: 40%;
   display: inline-block;
-  position: absolute;
 }
 
 #task-list {
   margin: auto;
   width: 95%;
 }
+
+#done-list {
+  margin: auto;
+  margin-top: 20px;
+  width: 95%;
+}
+
 
 #task-name {
   width: 90%;
@@ -108,12 +113,6 @@ body{
 #documents-button{
   display: block;
   margin-top: 10px;
-}
-
-#buttons-container{
-  top: 50px;
-  display: block;
-  position: relative;
 }
 
 .mdl-layout__header {
@@ -145,8 +144,8 @@ body{
 
 .mdl-list__item, .mdl-list__item .mdl-list__item-primary-content{
   width: 400px;
-  background: #999;
-  margin: 10px 40px;
+  background: white;
+  margin: 20px 40px;
   padding-left: 10px;
 }
 
@@ -281,4 +280,15 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 
 #homepage-table {
   text-align: -webkit-center;
+}
+
+#task-name-done{
+  padding-left: 85px;
+  text-decoration: line-through;
+}
+
+#documents {
+  display: block;
+  background: white;
+  margin: 20px 30px 20px 20px;
 }

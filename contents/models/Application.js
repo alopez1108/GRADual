@@ -13,6 +13,7 @@ var Application = function(school, due_date, recruiter, link, image_souce) {
     this.due_date = due_date; 
     this.application_link = link;
     this.image = image_souce;
+    this.num_tasks = 0; 
 
     // status can either be "open", "applied", "pending", "accepted", "waitlisted", or "rejected"
     this.status = "Open";
@@ -30,6 +31,7 @@ var Application = function(school, due_date, recruiter, link, image_souce) {
 
 	this.addTask = function(task_description){
 		this.tasks[task_description] = false;
+		this.num_tasks = this.num_tasks + 1; 
 	}
 
 	this.addDocument = function(file){
@@ -55,13 +57,6 @@ var Application = function(school, due_date, recruiter, link, image_souce) {
 	// 		completed = completed + 1;
 	// 	}
 	// }
-	for (var key in this.tasks){
-		var val = this.tasks[key];
-		if (val) {
-			completed += 1; 
-		}
-	}
-	this.percent_complete = (completed/ this.tasks.length);
 
 
 	this.changeStatusOfTask = function(task_description, changed_status) {
