@@ -2,7 +2,7 @@
  * Application represents an application started by the user. 
  */
  
-var Application = function(school, due_date, recruiter, link, image_souce) {
+var Application = function(school, due_date, recruiter, link, image_souce, number, events) {
     ////////////////////////////////////////////////
     // Representation
     //
@@ -13,7 +13,9 @@ var Application = function(school, due_date, recruiter, link, image_souce) {
     this.due_date = due_date; 
     this.application_link = link;
     this.image = image_souce;
-    this.num_tasks = 0; 
+    this.num_tasks = 0;
+	this.number = number;
+	this.events = events;
 
     // status can either be "open", "applied", "pending", "accepted", "waitlisted", or "rejected"
     this.status = "Open";

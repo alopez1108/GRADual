@@ -19,7 +19,6 @@
       <script src="../jquery/js/jquery-1.12.0.min.js"></script>
       <script src="../jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
       <script src="../js/material.min.js"></script>
-      <script src="../models/Task.js"></script>
       <script src="../models/Application.js"></script>
       <script src="../models/gradual.js"></script>
 	  <script src='../fullcalendar/lib/jquery.min.js'></script>
@@ -30,41 +29,41 @@
         $('#calendar').fullCalendar({
 			aspectRatio: 1.8,
 			eventTextColor: 'black',
-			events: [
-				{
-					title  : 'Interview',
-					start  : '2016-05-04',
-					editable : true,
-					color : '#ff4d4d'
-				},
-				{
-					title  : 'Admissions Results',
-					start  : '2016-05-29',
-					editable : true,
-					color : '#ff4d4d'
-				},
-				{
-					title  : 'Application Due',
-					start  : '2016-05-09',
-					editable : true,
-					color : "#6666ff"
-				},
-				{
-					title  : 'Admissions Results',
-					start  : '2016-05-02',
-					editable : true,
-					color : '#80ff80'
-				},
-				{
-					title  : 'Interview',
-					start  : '2016-05-19',
-					editable : true,
-					color : '#ff80ff'
-				}
-			]
 		});
       });
       </script>
+	  <script type="text/javascript">
+	  $(document).ready(function() {
+		var create_new_school_row = function(application){
+			var row_string = '';
+			row_string = row_string + "<tr><td ";
+			row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric school_" + application.number + "'";
+			row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
+			row_string = row_string + application.school + "</td></tr>";
+			console.log($('#calendar'));
+			console.log(application.events);
+			$('#calendar').fullCalendar("addEventSource", application.events);
+			console.log(row_string);
+			return row_string;
+		}
+
+		var create_school_list = function(){
+			var table_string = "<table id='school-list'";
+			table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"; 
+			table_string = table_string + "<thead style='background-color:#eee;'>";
+			table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
+			table_string = table_string + "<tbody style='background-color:#eee;'>";
+			for (i = 0; i < sessionStorage.length; i++){
+				var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
+				table_string = table_string + create_new_school_row(application);
+			}
+			table_string = table_string + "</tbody></table>";
+			console.log(table_string);
+			return table_string;
+		}
+		$('#school-list').replaceWith(create_school_list());
+	  });
+	  </script>
 	</head>
 	  
 	<body id="homepage">
@@ -214,10 +213,10 @@
 				"Columbia University",
 				"University of California - Berkeley",
 			  ];
-			  $( "#schoolpicker" ).autocomplete({
-				source: current_colleges
-			  });
-			  $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
+			 // $( "#schoolpicker" ).autocomplete({
+			//	source: current_colleges
+			 // });
+			 // $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
 			</script>
         </main>
       </div>

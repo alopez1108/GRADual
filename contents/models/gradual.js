@@ -60,23 +60,98 @@ $(function() {
 	    "Rice University (Jones)" : "Rice",
 	    "Boston College" : "BC",
 	};
+	
+	MITevents = {events: [{title  : 'Interview', start  : '2016-07-19', editable : true, color : '#ff4d4d'},
+				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff4d4d'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-17', editable : true, color : '#ff4d4d'},
+				{title  : 'Admissions Results', start  : '2016-07-31', editable : true, color : '#ff4d4d'}]};
+
+	Stanfordevents = {events: [{title  : 'Interview', start  : '2016-04-01', editable : true, color : '#6666ff'},
+				{title  : 'Application Due', start  : '2016-03-05', editable : true, color : '#6666ff'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-27', editable : true, color : '#6666ff'},
+				{title  : 'Admissions Results', start  : '2016-07-27', editable : true, color : '#6666ff'}]};
+    
+    Harvardevents = {events: [{title  : 'Interview', start  : '2016-04-03', editable : true, color : '#ff80ff'},
+				{title  : 'Application Due', start  : '2016-04-23', editable : true, color : '#ff80ff'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-12', editable : true, color : '#ff80ff'},
+				{title  : 'Admissions Results', start  : '2016-05-31', editable : true, color : '#ff80ff'}]};
+
+	Columbiaevents = {events: [{title  : 'Interview', start  : '2016-05-12', editable : true, color : '#ff8c1a'},
+				{title  : 'Application Due', start  : '2016-05-17', editable : true, color : '#ff8c1a'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-22', editable : true, color : '#ff8c1a'},
+				{title  : 'Admissions Results', start  : '2016-06-20', editable : true, color : '#ff8c1a'}]};
+
+	Yaleevents = {events: [{title  : 'Interview', start  : '2016-03-01', editable : true, color : '#ffff33'},
+				{title  : 'Application Due', start  : '2016-04-04', editable : true, color : '#ffff33'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-04', editable : true, color : '#ffff33'},
+				{title  : 'Admissions Results', start  : '2016-05-08', editable : true, color : '#ffff33'}]};
+
+	UCBerkeleyevents = {events: [{title  : 'Interview', start  : '2016-05-21', editable : true, color : '#80ff80'},
+				{title  : 'Application Due', start  : '2016-05-05', editable : true, color : '#80ff80'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-30', editable : true, color : '#80ff80'},
+				{title  : 'Admissions Results', start  : '2016-06-13', editable : true, color : '#80ff80'}]};
+				
+	Cornellevents = {events: [{title  : 'Interview', start  : '2016-07-02', editable : true, color : '#999999'},
+				{title  : 'Application Due', start  : '2016-06-16', editable : true, color : '#999999'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-06-13', editable : true, color : '#999999'},
+				{title  : 'Admissions Results', start  : '2016-08-11', editable : true, color : '#999999'}]};
+				
+	NotreDameevents = {events: [{title  : 'Interview', start  : '2016-05-17', editable : true, color : '#ff9f80'},
+				{title  : 'Application Due', start  : '2016-05-18', editable : true, color : '#ff9f80'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-04-29', editable : true, color : '#ff9f80'},
+				{title  : 'Admissions Results', start  : '2016-06-05', editable : true, color : '#ff9f80'}]};
+				
+	BCevents = {events: [{title  : 'Interview', start  : '2016-04-09', editable : true, color : '#cce0ff'},
+				{title  : 'Application Due', start  : '2016-04-20', editable : true, color : '#cce0ff'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-05-01', editable : true, color : '#cce0ff'},
+				{title  : 'Admissions Results', start  : '2016-07-26', editable : true, color : '#cce0ff'}]};
+				
+	Dukeevents = {events: [{title  : 'Interview', start  : '2016-02-28', editable : true, color : '#ffb3b3'},
+				{title  : 'Application Due', start  : '2016-03-04', editable : true, color : '#ffb3b3'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-07', editable : true, color : '#ffb3b3'},
+				{title  : 'Admissions Results', start  : '2016-04-15', editable : true, color : '#ffb3b3'}]};
+				
+	Georgetownevents = {events: [{title  : 'Interview', start  : '2016-03-16', editable : true, color : '#ffb366'},
+				{title  : 'Application Due', start  : '2016-03-17', editable : true, color : '#ffb366'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-22', editable : true, color : '#ffb366'},
+				{title  : 'Admissions Results', start  : '2016-06-02', editable : true, color : '#ffb366'}]};
+				
+	Riceevents = {events: [{title  : 'Interview', start  : '2016-08-17', editable : true, color : '#ffffb3'},
+				{title  : 'Application Due', start  : '2016-08-22', editable : true, color : '#ffffb3'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-08-04', editable : true, color : '#ffffb3'},
+				{title  : 'Admissions Results', start  : '2016-09-19', editable : true, color : '#ffffb3'}]};
+				
+	UChicagoevents = {events: [{title  : 'Interview', start  : '2016-01-12', editable : true, color : '#ccffcc'},
+				{title  : 'Application Due', start  : '2016-03-30', editable : true, color : '#ccffcc'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-16', editable : true, color : '#ccffcc'},
+				{title  : 'Admissions Results', start  : '2016-04-21', editable : true, color : '#ccffcc'}]};
+				
+	UVAevents = {events: [{title  : 'Interview', start  : '2016-02-07', editable : true, color : '#d9d9d9'},
+				{title  : 'Application Due', start  : '2016-02-13', editable : true, color : '#d9d9d9'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-03-01', editable : true, color : '#d9d9d9'},
+				{title  : 'Admissions Results', start  : '2016-06-06', editable : true, color : '#d9d9d9'}]};
+				
+	Pennevents = {events: [{title  : 'Interview', start  : '2016-07-15', editable : true, color : '#00ffff'},
+				{title  : 'Application Due', start  : '2016-07-17', editable : true, color : '#00ffff'},
+				{title  : 'Letters of Recommendation Due', start  : '2016-07-10', editable : true, color : '#00ffff'},
+				{title  : 'Admissions Results', start  : '2016-08-20', editable : true, color : '#00ffff'}]};
 
 	//Hard code in schools for prototype
-	apps_dict["MIT"] = new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/", "../images/MITpic.jpg");
-	apps_dict["Stanford"] = new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/", "../images/Stanfordpic.jpg");
-	apps_dict["Harvard"] = new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php", "../images/Harvardpic.jpg");
-	apps_dict["Columbia"] = new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/", "../images/Columbiapic.jpg");
-	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edu", "http://gsas.yale.edu/", "../images/Yalepic.jpg");
-	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg");
-	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg");
-	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg");
-	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg");
-	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg");
-	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg");
-	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg");
-	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg");
-	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg");
-	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg");
+	apps_dict["MIT"] = new Application("MIT", "September 1", "recruiter@mit.edu", "http://web.mit.edu/admissions/graduate/", "../images/MITpic.jpg", "1", MITevents);
+	apps_dict["Stanford"] = new Application("Stanford", "September 2", "recruiter@standford.edu", "http://gradadmissions.stanford.edu/", "../images/Stanfordpic.jpg", "2", Stanfordevents);
+	apps_dict["Harvard"] = new Application("Harvard", "September 1", "recruiter@college.harvard.edu", "http://www.gsas.harvard.edu/prospective_students/admissions_overview.php", "../images/Harvardpic.jpg", "3", Harvardevents);
+	apps_dict["Columbia"] = new Application("Columbia", "September 1", "recruiter@columbia.edu", "http://gsas.columbia.edu/", "../images/Columbiapic.jpg", "4", Columbiaevents);
+	apps_dict["Yale"] = new Application("Yale", "September 1", "recruiter@yale.edu", "http://gsas.yale.edu/", "../images/Yalepic.jpg", "5", Yaleevents);
+	apps_dict["UCBerkeley"] = new Application("UC Berkeley", "September 1", "recruiter@berkeley.cal.edu", "http://grad.berkeley.edu/programs/list/", "../images/Berkeleypic.jpg", "6", UCBerkeleyevents);
+	apps_dict["Cornell"] = new Application("Cornell", "September 3", "recruiter@cornell.edu", "http://gradschool.cornell.edu/", "../images/Cornellpic.jpg", "7", Cornellevents);
+	apps_dict["NotreDame"] = new Application("Notre Dame", "September 2", "recruiter@nd.edu", "http://graduateschool.nd.edu/", "../images/NotreDamepic.jpg", "8", NotreDameevents);
+	apps_dict["BC"] = new Application("Boston College", "September 1", "recruiter@bc.edu", "http://www.bc.edu/schools/gsas/admissions.html", "../images/BostonCollegepic.jpg", "9", BCevents);
+	apps_dict["Duke"] = new Application("Duke", "September 2", "recruiter@duke.edu", "https://gradschool.duke.edu/", "../images/Dukepic.jpg", "10", Dukeevents);
+	apps_dict["Georgetown"] = new Application("Georgetown", "September 1", "recruiter@georgetown.edu", "https://grad.georgetown.edu/admissions/programs", "../images/Georgetownpic.jpg", "11", Georgetownevents);
+	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg", "12", Riceevents);
+	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg", "13", UChicagoevents);
+	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg", "14", UVAevents);
+	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg", "15", Pennevents);
 	//////////////////////
 	// Search Applications 
 
@@ -235,31 +310,6 @@ $(function() {
 		return card_string;	
 	}
 	
-	var create_new_school_row = function(application){
-		var row_string = '';
-		row_string = row_string + "<tr><td ";
-		row_string = row_string + "id='" + application.school.toLowerCase() + "row'" + " class='mdl-data-table__cell--non-numeric'";
-		row_string = row_string + " style='font-family: 'Quattrocento', serif; font-weight: bold;'>";
-		row_string = row_string + application.school + "</td></tr>";
-		console.log(row_string);
-		return row_string;
-	}
-
-	var create_school_list = function(){
-		var table_string = "<table id='school-list'";
-		table_string = table_string + " class='mdl-data-table mdl-js-data-table mdl-data-table--selectable'>"; 
-		table_string = table_string + "<thead style='background-color:#eee;'>";
-		table_string = table_string + "<tr> <th class='mdl-data-table__cell--non-numeric' style=' text-align:left; font-family: 'Quattrocento', serif; font-weight: bold;'>All Schools</th></tr></thead>";
-		table_string = table_string + "<tbody style='background-color:#eee;'>";
-		for (i = 0; i < sessionStorage.length; i++){
-			var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-			table_string = table_string + create_new_school_row(application);
-		}
-		table_string = table_string + "</tbody></table>";
-		console.log(table_string);
-		return table_string;
-	}
-	
 	var create_homepage_table = function(){
 		var table_string = "<div id='homepage-table'>";
 		for (i = 0; i < sessionStorage.length + 1; i++){
@@ -276,7 +326,6 @@ $(function() {
 	}
 
 	$('#homepage-table').replaceWith(create_homepage_table());
-	$('#school-list').replaceWith(create_school_list());
 
 	if (on_school_page == true){
 	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
