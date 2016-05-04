@@ -28,7 +28,40 @@
       <script type="text/javascript">
       $(document).ready(function() {
         $('#calendar').fullCalendar({
-			aspectRatio: 1.8
+			aspectRatio: 1.8,
+			eventTextColor: 'black',
+			events: [
+				{
+					title  : 'Application Due!',
+					start  : '2016-05-05',
+					editable : true,
+					color : '#ff4d4d'
+				},
+				{
+					title  : 'Admissions Results',
+					start  : '2016-05-29',
+					editable : true,
+					color : '#ff4d4d'
+				},
+				{
+					title  : 'Interview',
+					start  : '2016-05-13',
+					editable : true,
+					color : "#6666ff"
+				},
+				{
+					title  : 'Recommendation Letters Due',
+					start  : '2016-05-09',
+					editable : true,
+					color : '#80ff80'
+				},
+				{
+					title  : 'Application Due',
+					start  : '2016-05-18',
+					editable : true,
+					color : '#ff80ff'
+				}
+			]
 		});
       });
       </script>
@@ -137,42 +170,6 @@
           </div>
         </header>
         <main class="mdl-layout__content">
-			
-        <script>
-          $("#add_reminder_button").on("click", function() {
-            var dialog = document.querySelector('dialog');
-            if (! dialog) {
-              dialogPolyfill.registerDialog(dialog);
-            }
-            dialog.showModal();
-          });
-
-          dialog.querySelector('.close').addEventListener('click', function() {
-            // $('#login')[0].reset(); //clear text
-            dialog.close();
-          });
-          dialog.querySelector('.add').addEventListener('click',function() {
-            // add university to homepage
-            var text_input = $('#schoolpicker').val();
-            // check if it is in the array of colleges
-            if (jQuery.inArray(text_input, current_colleges) !== -1) {
-              console.log("yes");
-              dialog.close();
-            }
-          });
-          var current_colleges = [
-            "Harvard University",
-            "Stanford University",
-            "Massachusetts Institute of Technology (Sloan)",
-            "Yale University",
-            "Columbia University",
-            "University of California - Berkeley",
-          ];
-          $( "#schoolpicker" ).autocomplete({
-            source: current_colleges
-          });
-          $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
-        </script>
 			  <div id="school-checker"
 				style="width:13%; position:absolute; margin-left:5%; margin-right:auto; margin-top:10%; border-style:solid; border-width:0px; border-color:;">
 				<table id="school-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable">
@@ -205,10 +202,45 @@
 			  </div>
 			  <div id="calendar-holder" style="width:70%; margin-left:auto; margin-right:7%; margin-top:1%; margin-bottom:auto;">
 				  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent show-modal" id="add_reminder_button" 
-					style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:30px; font-family: 'Quattrocento', serif;"> + Add Reminder
+					style="display:block; width:100%; max-width:25%; margin-right:auto; margin-left:auto; margin-top:2%; font-family: 'Quattrocento', serif;"> + Add Reminder
 				  </button>
 				  <div id="calendar"></div>
 			  </div>
+			  <script>
+			  $("#add_reminder_button").on("click", function() {
+				var dialog = document.querySelector('dialog');
+				if (! dialog) {
+				  dialogPolyfill.registerDialog(dialog);
+				}
+				dialog.showModal();
+			  });
+
+			  dialog.querySelector('.close').addEventListener('click', function() {
+				// $('#login')[0].reset(); //clear text
+				dialog.close();
+			  });
+			  dialog.querySelector('.add').addEventListener('click',function() {
+				// add university to homepage
+				var text_input = $('#schoolpicker').val();
+				// check if it is in the array of colleges
+				if (jQuery.inArray(text_input, current_colleges) !== -1) {
+				  console.log("yes");
+				  dialog.close();
+				}
+			  });
+			  var current_colleges = [
+				"Harvard University",
+				"Stanford University",
+				"Massachusetts Institute of Technology (Sloan)",
+				"Yale University",
+				"Columbia University",
+				"University of California - Berkeley",
+			  ];
+			  $( "#schoolpicker" ).autocomplete({
+				source: current_colleges
+			  });
+			  $( "#schoolpicker" ).autocomplete("option", "appendTo", "#dialog"); 
+			</script>
         </main>
       </div>
   </body>
