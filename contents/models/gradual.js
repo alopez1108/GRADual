@@ -53,7 +53,7 @@ $(function() {
 	    "Harvard University" : "Harvard",
 	    "Stanford University" : "Stanford",
 	    "University of Chicago (Booth)" : "UChicago",
-	    "University of Pennsylvania (Wharton)" : "Penn",
+	    "University of Pennsylvania (Wharton)" : "UPenn",
 	    "Massachusetts Institute of Technology (Sloan)" : "MIT",
 	    "Yale University" : "Yale",
 	    "Columbia University" : "Columbia",
@@ -65,6 +65,58 @@ $(function() {
 	    "University of California - Berkeley" : "UCBerkeley",
 	    "Rice University (Jones)" : "Rice",
 	    "Boston College" : "BC",
+	};
+
+	var common_name_to_shorthand ={ 
+	    "Harvard" : "Harvard",
+	    "Stanford" : "Stanford",
+	    "UChicago" : "UChicago",
+	    "UPenn" : "UPenn",
+	    "MIT" : "MIT",
+	    "Yale" : "Yale",
+	    "Columbia" : "Columbia",
+	    "Cornell" : "Cornell",
+	    "Duke" : "Duke",
+	    "Notre Dame" : "NotreDame",
+	    "Georgetown" : "Georgetown",
+	    "UVA" : "UVA",
+	    "UC Berkeley" : "UCBerkeley",
+	    "Rice" : "Rice",
+	    "Boston College" : "bostoncollege",
+	};
+
+	var shorthand_to_common_name ={ 
+	    "Harvard" : "Harvard",
+	    "harvard" : "Harvard",
+	    "Stanford" : "Stanford",
+	    "stanford" : "Stanford",
+	    "UChicago" : "UChicago",
+	    "uchicago" : "UChicago",
+	    "UPenn" : "UPenn",
+	    "upenn" : "UPenn",
+	    "MIT" : "MIT",
+	    "mit" : "MIT",
+	    "Yale" : "Yale",
+	    "Columbia" : "Columbia",
+	    "Cornell" : "Cornell",
+	    "Duke" : "Duke",
+	    "yale" : "Yale",
+	    "columbia" : "Columbia",
+	    "cornell" : "Cornell",
+	    "duke" : "Duke",
+	    "NotreDame": "Notre Dame",
+	    "notredame": "Notre Dame",
+	    "Georgetown" : "Georgetown",
+	    "georgetown" : "Georgetown",
+	    "UVA" : "UVA",
+	    "uva" : "UVA",
+	    "UCBerkeley" : "UC Berkeley",
+	    "ucberkeley" : "UC Berkeley",
+	    "Rice" : "Rice",
+	    "rice" : "Rice",
+	    "bostoncollege" : "Boston College",
+	    "bc" : "Boston College",
+	    "BC" : "Boston College",
 	};
 	
 	MITevents = {events: [{title  : 'Interview', start  : '2016-07-19', editable : true, color : '#ff4d4d'},
@@ -198,7 +250,7 @@ $(function() {
 	apps_dict["Rice"] = new Application("Rice", "September 1", "recruiter@rice.edu", "https://graduate.rice.edu/", "../images/Ricepic.jpg", stanfordTasks, "12", Riceevents);
 	apps_dict["UChicago"] = new Application("UChicago", "September 2", "recruiter@uchicago.edu", "http://grad.uchicago.edu/", "../images/UChicagopic.jpg", harvardTasks, "13", UChicagoevents);
 	apps_dict["UVA"] = new Application("UVA", "September 3", "recruiter@virginia.edu", "http://gsas.virginia.edu/", "../images/UVApic.jpg", columbiaTasks, "14", UVAevents);
-	apps_dict["Penn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg", yaleTasks, "15", Pennevents);
+	apps_dict["UPenn"] = new Application("UPenn", "September 2", "recruiter@upenn.edu", "http://www.upenn.edu/programs/graduate", "../images/UPennpic.jpg", yaleTasks, "15", Pennevents);
 	//////////////////////
 	// Search Applications 
 
@@ -282,9 +334,10 @@ $(function() {
 	$('#side-drawers').replaceWith('<nav id="side-drawers" class="mdl-navigation">' + replace_side_bar + '</nav>');
 
 	$('.mdl-navigation__link').click(function(e){
-		// current_school = $(this).context.id;
+		schoolName = e.currentTarget.innerHTML;
+		console.log(schoolName);
 		// change_to_school_page(current_school);
-		location.href = "./headWithSideBar.html?="+$(this).context.id
+		location.href = "./headWithSideBar.html?="+common_name_to_shorthand[schoolName]
 	});
 
 	$('.mdl-layout__content').on('click', '#resources-button', function(){
@@ -327,19 +380,21 @@ $(function() {
 	var url = window.location.href;
 	if(url.indexOf('?')!=-1) {
 		var escuela = url.substring(url.indexOf('?')+2);
-		change_to_school_page(escuela);
+		console.log(escuela);
+		change_to_school_page(shorthand_to_common_name[escuela]);
 	}
 
 	var create_school_card = function(application){
 		var card_string = '';
+		schoolName = application.school.toLowerCase().replace(/\s/g, '')
 		card_string = card_string + "<div class='application_card'>";
-		card_string = card_string + "<a href='./headWithSideBar.html?=" + application.school +  "''>";
+		card_string = card_string + "<a href='./headWithSideBar.html?=" + schoolName +  "''>";
 		card_string = card_string + "<div class='demo-card-square mdl-card mdl-shadow--2dp'>";
 		card_string = card_string + "<div class='mdl-card__title mdl-card--expand'>";
 		card_string = card_string + "<img class='background' src=" + application.image + " width='320' height='289' left='0' z-index='0'>";
 		card_string = card_string + "<h2 class='mdl-card__title-text'>" + application.school + "</h2></div>";
 		card_string = card_string + "<div class='mdl-card__actions mdl-card--border'>";
-		card_string = card_string + "<div id=" + application.school.toLowerCase() + "Progress" + " class='mdl-progress mdl-js-progress'></div></div>";
+		card_string = card_string + "<div id=" + schoolName + "Progress" + " class='mdl-progress mdl-js-progress'></div></div>";
 		card_string = card_string + "</div></a></div>";
 		return card_string;
 	}
@@ -379,6 +434,8 @@ $(function() {
 	    		var curr_app = find_application_by_school(current_school);
 	    		curr_app.tasks[event.target.parentNode.parentNode.parentNode.childNodes[1].textContent] = true;
 	    		apps_dict[current_school] = curr_app;
+	    		console.log(current_school);
+	    		console.log(apps_dict[current_school]);
 	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
 	    		location.reload();
 	    	});
@@ -407,8 +464,10 @@ $(function() {
 	    // check if it is in the array of colleges
 	    if (jQuery.inArray(text_input, colleges) !== -1) {
 	    	app_string = college_to_shorthand[text_input]
+	    	console.log(app_string);
+	    	console.log("HEREWEGO");
 	    	console.log(JSON.stringify(apps_dict[app_string]));
-	    	sessionStorage.setItem(app_string, JSON.stringify(apps_dict[app_string]));
+	    	sessionStorage.setItem(shorthand_to_common_name[app_string], JSON.stringify(apps_dict[app_string]));
 	    	console.table(sessionStorage);
 	        $('#search_field')[0].reset(); //clear text
 	        dialog.close();
@@ -417,7 +476,7 @@ $(function() {
 	        window['counter'] = 0;
 			var snackbarContainer = document.querySelector('#applicationAddedNotice');
 			var data = {
-				message: app_string +' Application Added!',
+				message: shorthand_to_common_name[app_string] +' Application Added!',
 			};
           	snackbarContainer.MaterialSnackbar.showSnackbar(data);
 	    }
@@ -452,7 +511,7 @@ $(function() {
 	    for (i = 0; i < sessionStorage.length; i ++ ){
 	    	// console.log("sessionStorage HAS LENGTH LONGER THAN ONE");
 	    	var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
-	    	var name = application.school.toLowerCase() + "Progress";
+	    	var name = common_name_to_shorthand[application.school].toLowerCase() + "Progress";
 	    	// console.log(application);
 			componentHandler.upgradeAllRegistered();
 			// console.log(application.percent_complete);
@@ -464,6 +523,7 @@ $(function() {
 				}
 				num_total += 1; 
 			}
+			console.log(name);
 			document.querySelector("#" + name).MaterialProgress.setProgress((num_completed/num_total) * 100);
 	    }
     }
