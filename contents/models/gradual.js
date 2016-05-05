@@ -2,7 +2,6 @@
 // has finished loading in the browser.
 
 $(function() {
-	console.log(sessionStorage);
 
 	var url = window.location.href
     if(url.charAt(url.length-1)==='#') {
@@ -10,7 +9,6 @@ $(function() {
     }
 
 	var apps_dict = {};
-	var on_homepage; 
 	var on_school_page;
 	var on_login;
 	if($("#loginButton").length==1) {
@@ -274,24 +272,16 @@ $(function() {
 	// Set up page
 
 	var current_school; 
-	console.log(apps_dict);
 	var change_to_resources = function (){
 		$('#buttons').replaceWith('<div id="buttons"><a href= ' + application.application_link + ' id="app-portal-button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Go to Application Portal</a><div id="recruiter-info"><h6>Recruiter X: (555) 555-5555 </h6><h6>Recruiter X: email@email.com</h6></div></div>')
 	}
 
-	var change_to_documents = function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   Documents </div>');
-	}
-
-	var change_to_phone_numbers= function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   <a id="resources-link"> Resources</a>    >>>>>   Phone Numbers</div>');
-		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a class="mdl-list__item-primary-content">Recruiter: (+1) 555 - 555 - 5555</a></li></ul></div>');
-	}
-
-	var change_to_emails= function(){
-		$('#navigation').replaceWith('<div id="navigation"><a id="school_name_link">' + current_school + '</a>   >   <a id="resources-link"> Resources</a>    >>>>>   Emails</div>');
-		var application = find_application_by_school(current_school);
-		$('#resources-content').replaceWith('<div id="resources-content"><ul class="demo-list-item mdl-list"><li class="mdl-list__item"><a class="mdl-list__item-primary-content">Recruiter: ' + application.recruiter + '</a></li></ul></div>')
+	var update_essays = function(){
+		var inside = '';
+		for (key in localStorage){
+			inside = inside + '<div id="essay-title">' + key + '<span name="close" id="close">X</span></div>';
+		}
+		$('#essays').replaceWith('<div id="essays">' + inside + '</div>');
 	}
 
 	var change_to_school_page = function(school){
@@ -299,7 +289,6 @@ $(function() {
 		on_school_page = true;
 		$('.page-content').replaceWith('<div class="page-content"><h3 id="school-name"></h3><div id="tasks"><table id="task-list" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable"></table><table id="done-list" class="mdl-data-table mdl-js-data-table"></table></div><div id="buttons"></div><div id="documents"></div></div>');
 		$('#school-name').text(current_school);
-		console.log(school);
 		var application = find_application_by_school(current_school);
 		var replace_tasks = '';
 		var done_tasks = '';
@@ -307,7 +296,7 @@ $(function() {
 		var finished_tasks = 0;
 		for (var key in application.tasks) {
 			if (application.tasks[key] == true){
-				done_tasks = done_tasks + '<tr><td id="task-name-done" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
+				done_tasks = done_tasks + '<tr><td id="task-name-done" name="done-task" class="mdl-data-table__cell--non-numeric">' + key + '</td></tr>';
 				i = i + 1; 
 				finished_tasks = finished_tasks += 1; 
 			}
@@ -328,7 +317,8 @@ $(function() {
 		}
 		change_to_resources();
 		componentHandler.upgradeAllRegistered();
-		$('#documents').replaceWith('<div id="documents"><h5 id="documents-label">Documents</h5><div id="essays-form"><form id="docs-form"><div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label class="mdl-textfield__label" for="sample1">Essay title</label></div><div class="mdl-textfield mdl-js-textfield"><textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea><label class="mdl-textfield__label" for="sample5">Write your essay here...</label></div></form><button name="data" id="save-button" type="button" class="mdl-button mdl-js-button mdl-button--raised">Save</button></div><div id="essays"></div></div>')
+		$('#documents').replaceWith('<div id="documents"><h5 id="documents-label">Documents</h5><div id="essays-form"><form id="docs-form"><div class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="text" id="sample1"><label id="s1-label" class="mdl-textfield__label" for="sample1">Essay title</label></div><div class="mdl-textfield mdl-js-textfield"><textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5"></textarea><label id="s5-label" class="mdl-textfield__label" for="sample5">Write your essay here...</label></div></form><button name="data" id="save-button" type="button" class="mdl-button mdl-js-button mdl-button--raised">Save</button></div><div id="essays"></div></div>')
+		update_essays();
 	}
 
 	var replace_side_bar =''; 
@@ -341,8 +331,6 @@ $(function() {
 
 	$('.mdl-navigation__link').click(function(e){
 		schoolName = e.currentTarget.innerHTML;
-		console.log(schoolName);
-		// change_to_school_page(current_school);
 		location.href = "./headWithSideBar.html?="+common_name_to_shorthand[schoolName]
 	});
 
@@ -351,27 +339,10 @@ $(function() {
 		change_to_resources();
 	});
 
-
-	$('.mdl-layout__content').on('click', '#documents-button', function(){
-		$('.page-content').replaceWith('<div class="page-content"><div id="navigation"></div><div id="documents-content"></div>');
-		change_to_documents();
-	});
-
 	$('.mdl-layout__content').on('click', '#school_name_link', function(){
 		change_to_school_page(current_school);
 	});
 
-	$('.mdl-layout__content').on('click', '#resources-link', function(){
-		change_to_resources();
-	});
-
-	$('.mdl-layout__content').on('click', '#phone-numbers', function(){
-		change_to_phone_numbers();
-	});
-
-	$('.mdl-layout__content').on('click', '#emails', function(){
-		change_to_emails();
-	});
 
 	if(!on_login) {
 		document.getElementById("homeButton").addEventListener("click", function() {
@@ -386,7 +357,6 @@ $(function() {
 	var url = window.location.href;
 	if(url.indexOf('?')!=-1) {
 		var escuela = url.substring(url.indexOf('?')+2);
-		console.log(escuela);
 		change_to_school_page(shorthand_to_common_name[escuela]);
 	}
 
@@ -431,23 +401,6 @@ $(function() {
 
 	$('#homepage-table').replaceWith(create_homepage_table());
 
-	if (on_school_page == true){
-	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
-	  	for (var i = 0; i < checkboxes.length; i++) {
-	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
-    		var div_task = checkboxes[i];
-	    	checkboxes[i].addEventListener('change', function(event){
-	    		var curr_app = find_application_by_school(current_school);
-	    		curr_app.tasks[event.target.parentNode.parentNode.parentNode.childNodes[1].textContent] = true;
-	    		apps_dict[current_school] = curr_app;
-	    		console.log(current_school);
-	    		console.log(apps_dict[current_school]);
-	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
-	    		location.reload();
-	    	});
-	  	}
-  	}
-
 
 	$(document.body).on('click', '#newCard', function() {
 	    var dialog = document.querySelector('dialog');
@@ -458,6 +411,20 @@ $(function() {
     });
 
     if (on_school_page == true) {
+
+	    var checkboxes = document.getElementById('task-list').querySelector('tbody').querySelectorAll('.mdl-checkbox__input');
+	  	for (var i = 0; i < checkboxes.length; i++) {
+	  		var task_name = checkboxes[i].parentNode.parentNode.parentNode.querySelector('#task-name').textContent;
+    		var div_task = checkboxes[i];
+	    	checkboxes[i].addEventListener('change', function(event){
+	    		var curr_app = find_application_by_school(current_school);
+	    		curr_app.tasks[event.target.parentNode.parentNode.parentNode.childNodes[1].textContent] = true;
+	    		apps_dict[current_school] = curr_app;
+	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
+	    		location.reload();
+	    	});
+	  	}
+
 
     	var title_input = false;
     	var essay_input = false; 
@@ -497,9 +464,6 @@ $(function() {
 		$("#save-button").prop("disabled", true);
 
 		document.getElementById('save-button').addEventListener('click', function(){
-			console.log("fskdjflkjdfad");
-			console.log($('#sample1').val());
-			console.log($('#sample5').val());
 			var title = $('#sample1').val();
 			var essay = $('#sample5').val();
 			$(':input','#docs-form')
@@ -508,8 +472,30 @@ $(function() {
 			  .removeAttr('checked')
 			  .removeAttr('selected');
 			$("#save-button").prop("disabled", true);
-			$('#essays').replaceWith('<div id="essays"><a id="essay-title">' + title + '</a></div>')
+			localStorage.setItem(title, essay);
+			update_essays();
 		});
+
+	    var closes = document.getElementsByName('close');
+	    for (i=0; i < closes.length; i++){
+	    	closes[i].addEventListener("click", function(){
+	    		var essay_name = event.target.parentElement.textContent;
+	    		essay_name = essay_name.substring(0, essay_name.length-1);
+	    		localStorage.removeItem(essay_name);
+	    		update_essays();
+	    	});
+	    }
+
+	    var tasks_finished = document.getElementsByName('done-task');
+	    for (i=0; i < tasks_finished.length; i++){
+	    	tasks_finished[i].addEventListener("click", function(){
+	    		var curr_app = find_application_by_school(current_school);
+	    		curr_app.tasks[event.target.textContent] = false;
+	    		apps_dict[current_school] = curr_app;
+	    		sessionStorage.setItem(current_school, JSON.stringify(apps_dict[current_school]));
+	    		location.reload();
+	    	});
+	    }
 	}
 
 
@@ -521,14 +507,9 @@ $(function() {
     dialog.querySelector('.add').addEventListener('click',function() {
 	    // add university to homepage
 	    var text_input = $('#search_applications').val();
-	    console.log(text_input);
 	    // check if it is in the array of colleges
-	    console.log(sessionStorage.getItem(college_to_shorthand[text_input]));
 	    if (jQuery.inArray(text_input, colleges) !== -1 && sessionStorage.getItem(college_to_shorthand[text_input])==null) {
 	    	app_string = college_to_shorthand[text_input]
-	    	console.log(app_string);
-	    	console.log("HEREWEGO");
-	    	console.log(JSON.stringify(apps_dict[app_string]));
 	    	sessionStorage.setItem(shorthand_to_common_name[app_string], JSON.stringify(apps_dict[app_string]));
 	    	console.table(sessionStorage);
 	        $('#search_field')[0].reset(); //clear text
@@ -580,22 +561,15 @@ $(function() {
 
     $( "#search_applications" ).autocomplete({
     	source: colleges,
-    // 	select: function (event, ui) {
-		  //   $("#addApp").focus();
-		  //   return false;
-		  // }
     });
 
     $( "#search_applications" ).autocomplete("option", "appendTo", "#dialog");  
 
     var add_progress_bars = function(){
 	    for (i = 0; i < sessionStorage.length; i ++ ){
-	    	// console.log("sessionStorage HAS LENGTH LONGER THAN ONE");
 	    	var application = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)));
 	    	var name = common_name_to_shorthand[application.school].toLowerCase() + "Progress";
-	    	// console.log(application);
 			componentHandler.upgradeAllRegistered();
-			// console.log(application.percent_complete);
 			var num_completed = 0; 
 			var num_total = 0; 
 			for (var key in application.tasks) {
@@ -604,11 +578,9 @@ $(function() {
 				}
 				num_total += 1; 
 			}
-			console.log(name);
 			document.querySelector("#" + name).MaterialProgress.setProgress((num_completed/num_total) * 100);
 	    }
     }
-
 
 	add_progress_bars();
 

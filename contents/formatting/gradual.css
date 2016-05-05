@@ -408,6 +408,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   display: inline-block;
   position: absolute;
   padding-left: 50px;
+  width: 25%;
 }
 
 #essays-form {
@@ -418,6 +419,14 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
 #essay-title {
   display: block;
   font-size: 24px;
+  margin: 15px;
+}
+
+#close{
+  font-size: 20px;
+  float: right;
+  display: inline;
+  cursor: pointer;
 }
 
 
